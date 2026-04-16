@@ -3,33 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>홍성의 AX 강연 공간</title>
-  <style>
-    body {
-      font-family: 'Malgun Gothic', sans-serif;
-      max-width: 800px;
-      margin: 80px auto;
-      padding: 0 20px;
-      color: #333;
-      line-height: 1.8;
-    }
-    h1 {
-      font-size: 2rem;
-      color: #1a1a2e;
-      border-bottom: 3px solid #4a90e2;
-      padding-bottom: 12px;
-    }
-    p {
-      font-size: 1.1rem;
-      color: #555;
-    }
-  </style>
+  <title>홍성 · AX 강연 공간</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>안녕하세요, 홍성의 AX 강연 공간입니다</h1>
-  <p>
-    이 공간은 AI Transformation(AX)에 관한 강연 자료와 인사이트를 공유하기 위해 만들어졌습니다.<br>
-    함께 배우고 성장하는 여정에 오신 것을 환영합니다.
-  </p>
+
+  <!-- ── 상단 네비게이션 ── -->
+  <header class="site-header">
+    <nav class="container nav-inner">
+      <a href="index.html" class="logo">홍성 · AX</a>
+
+      <!-- 모바일 햄버거 버튼 -->
+      <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="active">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="lectures.html">강연 일정</a></li>
+        <li><a href="resources.html">자료실</a></li>
+        <li><a href="community.html">커뮤니티</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── 히어로 섹션 ── -->
+    <section class="hero">
+      <div class="container">
+        <span class="hero-label">AI transformation</span>
+        <h1 class="hero-title">
+          AX 시대의 생각과 실천을<br>
+          함께 나누는 공간
+        </h1>
+        <p class="hero-sub">
+          SK텔레콤에서 IT와 통신을 이끌어 온 경험을<br>
+          여러분의 AX 여정에 나누고자 합니다.
+        </p>
+        <div class="btn-group">
+          <a href="lectures.html" class="btn btn-solid">다음 강연 보기</a>
+          <a href="about.html" class="btn btn-outline">강연자 소개</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 다음 강연 카드 섹션 ── -->
+    <section class="next-lecture">
+      <div class="container">
+        <p class="section-label">다음 강연</p>
+        <div class="lecture-card">
+          <div class="lecture-card-info">
+            <h2 class="lecture-card-title">아이씨푸드의 담대한 AX 도전과 찬란한 미래</h2>
+            <p class="lecture-card-meta">2026년 4월 22일 &middot; 오후 1시 30분 &middot; 대전</p>
+          </div>
+          <a href="lectures.html" class="lecture-card-cta">신청하기 →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── 푸터 ── -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-copy">© 2026 홍성. AX lecture space.</p>
+      <p class="footer-email">
+        <a href="mailto:hschang69@gmail.com">hschang69@gmail.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- 햄버거 메뉴 토글 스크립트 -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+  </script>
+
 </body>
 </html>

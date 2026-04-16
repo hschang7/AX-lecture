@@ -1,0 +1,369 @@
+/* =============================================
+   공통 스타일 — AX 강연 홈페이지
+   색상: 따뜻한 베이지 모노톤 팔레트
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+/* ── 리셋 & 기본 ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-main:       #FAF5EC;
+  --bg-accent:     #F5EEE1;
+  --text-title:    #3D2E1F;
+  --text-body:     #6B5842;
+  --text-point:    #A37A42;
+  --btn-primary:   #8C5E2A;
+  --divider:       #E8DDC7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-body);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── 공통 컨테이너 ── */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =============================================
+   네비게이션
+   ============================================= */
+.site-header {
+  background-color: var(--bg-main);
+  border-bottom: 1px solid var(--divider);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+/* 로고 */
+.logo {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-title);
+  letter-spacing: 0.5px;
+}
+
+/* 메뉴 목록 */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+.nav-menu a {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-body);
+  transition: color 0.2s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: var(--text-title);
+  font-weight: 500;
+}
+
+/* 햄버거 버튼 (모바일 전용) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--text-title);
+  transition: transform 0.25s, opacity 0.25s;
+}
+
+/* 햄버거 열림 상태 */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* =============================================
+   공통 섹션 여백
+   ============================================= */
+section {
+  padding: 72px 0;
+}
+
+/* =============================================
+   히어로 섹션
+   ============================================= */
+.hero {
+  text-align: center;
+  padding: 96px 0 80px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--text-point);
+  text-transform: lowercase;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text-title);
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.9;
+  margin-bottom: 40px;
+}
+
+/* 버튼 묶음 */
+.btn-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 버튼 공통 */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* 채운 버튼 */
+.btn-solid {
+  background-color: var(--btn-primary);
+  color: var(--bg-main);
+  border: 1px solid var(--btn-primary);
+}
+
+.btn-solid:hover {
+  background-color: #7A5124;
+  border-color: #7A5124;
+}
+
+/* 테두리 버튼 */
+.btn-outline {
+  background-color: transparent;
+  color: var(--btn-primary);
+  border: 1px solid var(--btn-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--btn-primary);
+  color: var(--bg-main);
+}
+
+/* =============================================
+   다음 강연 카드 섹션
+   ============================================= */
+.next-lecture {
+  background-color: var(--bg-accent);
+  padding: 56px 0;
+}
+
+.section-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--text-point);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* 카드 */
+.lecture-card {
+  background-color: var(--bg-main);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.lecture-card-info {
+  flex: 1;
+}
+
+.lecture-card-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.lecture-card-meta {
+  font-size: 13px;
+  color: var(--text-point);
+  letter-spacing: 0.3px;
+}
+
+/* 신청 링크 */
+.lecture-card-cta {
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--btn-primary);
+  border-bottom: 1px solid var(--btn-primary);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.lecture-card-cta:hover {
+  opacity: 0.7;
+}
+
+/* =============================================
+   푸터
+   ============================================= */
+.site-footer {
+  border-top: 1px solid var(--divider);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--text-body);
+  margin-bottom: 6px;
+}
+
+.footer-email {
+  font-size: 13px;
+  color: var(--text-point);
+}
+
+.footer-email a:hover {
+  text-decoration: underline;
+}
+
+/* =============================================
+   뼈대 페이지 — "준비 중" 영역
+   ============================================= */
+.coming-soon {
+  text-align: center;
+  padding: 120px 0;
+}
+
+.coming-soon-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 16px;
+}
+
+.coming-soon-desc {
+  font-size: 15px;
+  color: var(--text-body);
+}
+
+/* =============================================
+   반응형 — 768px 이하
+   ============================================= */
+@media (max-width: 768px) {
+  /* 햄버거 표시 */
+  .hamburger {
+    display: flex;
+  }
+
+  /* 메뉴 드롭다운 */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-main);
+    border-bottom: 1px solid var(--divider);
+    padding: 8px 0;
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-menu li a {
+    display: block;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .nav-menu li:last-child a {
+    border-bottom: none;
+  }
+
+  /* 히어로 */
+  .hero {
+    padding: 64px 0 56px;
+  }
+
+  .hero-title {
+    font-size: 26px;
+  }
+
+  /* 강연 카드 세로 배치 */
+  .lecture-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+}
