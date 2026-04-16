@@ -16,8 +16,8 @@
   --bg-main:       #FAF5EC;
   --bg-accent:     #F5EEE1;
   --text-title:    #3D2E1F;
-  --text-body:     #6B5842;
-  --text-point:    #A37A42;
+  --text-body:     #5A4535;   /* #6B5842 → 대비 강화 */
+  --text-point:    #7A5828;   /* #A37A42 → WCAG AA 통과 수준으로 어둡게 */
   --btn-primary:   #8C5E2A;
   --divider:       #E8DDC7;
 }
@@ -30,8 +30,8 @@ body {
   background-color: var(--bg-main);
   color: var(--text-body);
   font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 300;
-  line-height: 1.8;
+  font-weight: 400;
+  line-height: 1.85;
   font-size: 17px;
 }
 
@@ -88,7 +88,7 @@ img {
 
 .nav-menu a {
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--text-body);
   transition: color 0.2s;
 }
@@ -648,9 +648,9 @@ section {
 }
 
 .lec-upcoming-desc {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-body);
-  line-height: 1.7;
+  line-height: 1.8;
   margin-bottom: 16px;
 }
 
@@ -670,12 +670,12 @@ section {
 }
 
 .lec-meta-label {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-point);
 }
 
 .lec-meta-value {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-title);
   line-height: 1.5;
 }
@@ -706,14 +706,14 @@ section {
 }
 
 .lec-past-title {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--text-title);
   margin-bottom: 4px;
   line-height: 1.5;
 }
 
 .lec-past-location {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-body);
 }
 
@@ -788,10 +788,10 @@ section {
 }
 
 .res-section-desc {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-body);
   margin-bottom: 28px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .res-empty {
@@ -847,11 +847,11 @@ section {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-title);
-  padding: 6px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--divider);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .res-outline-item:first-child {
@@ -860,7 +860,7 @@ section {
 
 .res-outline-num {
   flex-shrink: 0;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-point);
   width: 16px;
 }
@@ -871,12 +871,12 @@ section {
 }
 
 .res-keymsg-item {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-title);
-  line-height: 1.75;
+  line-height: 1.8;
   padding-left: 14px;
   border-left: 2px solid var(--text-point);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .res-keymsg-item:last-child {
@@ -935,9 +935,9 @@ section {
 }
 
 .res-book-note {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-body);
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 /* ── 반응형 ── */
@@ -1016,7 +1016,7 @@ section {
 }
 
 .comm-auth-guide {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-body);
   flex: 1;
   min-width: 200px;
@@ -1274,10 +1274,10 @@ section {
   background: transparent;
   border: 0.5px solid var(--text-point);
   color: var(--text-point);
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 16px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   transition: background-color 0.15s, color 0.15s;
 }
@@ -1292,7 +1292,7 @@ section {
 .comm-posts-loading {
   text-align: center;
   padding: 40px;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-point);
 }
 
@@ -1302,9 +1302,9 @@ section {
   border-radius: 8px;
   padding: 40px;
   text-align: center;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-body);
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 /* ── 글 카드 ── */
@@ -1334,12 +1334,12 @@ section {
   color: var(--text-body);
   padding: 3px 10px;
   border-radius: 12px;
-  font-size: 11px;
-  letter-spacing: 0.5px;
+  font-size: 12px;
+  letter-spacing: 0.3px;
 }
 
 .comm-post-author {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-point);
 }
 
@@ -1353,9 +1353,9 @@ section {
 }
 
 .comm-post-content {
-  font-size: 14px;
-  color: var(--text-title);
-  line-height: 1.8;
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.85;
   white-space: pre-wrap;
 }
 
@@ -1397,13 +1397,13 @@ section {
 }
 
 .comm-comment-loading {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-point);
   padding: 4px 0;
 }
 
 .comm-comment-empty {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-point);
   text-align: center;
   padding: 8px 0;
@@ -1426,20 +1426,20 @@ section {
 }
 
 .comm-comment-author {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text-title);
 }
 
 .comm-comment-time {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-point);
 }
 
 .comm-comment-content {
-  font-size: 13px;
-  color: var(--text-title);
-  line-height: 1.7;
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.8;
   white-space: pre-wrap;
 }
 
@@ -1447,7 +1447,7 @@ section {
 .comm-comment-delete-btn {
   background: none;
   border: none;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-point);
   cursor: pointer;
   padding: 0;
@@ -1468,7 +1468,7 @@ section {
 .comm-comment-toggle-btn {
   background: none;
   border: none;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--btn-primary);
   cursor: pointer;
   padding: 6px 0;
@@ -1493,7 +1493,7 @@ section {
   border: 0.5px solid var(--divider);
   border-radius: 6px;
   padding: 10px 12px;
-  font-size: 13px;
+  font-size: 14px;
   font-family: 'Noto Sans KR', sans-serif;
   line-height: 1.6;
   color: var(--text-title);
@@ -1518,10 +1518,10 @@ section {
   background: transparent;
   border: 0.5px solid var(--text-point);
   color: var(--text-body);
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: 4px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -1534,10 +1534,10 @@ section {
   background-color: var(--btn-primary);
   color: var(--bg-main);
   border: none;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: 4px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
