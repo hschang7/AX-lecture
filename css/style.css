@@ -806,11 +806,11 @@ section {
   border: 0.5px solid var(--divider);
   border-radius: 8px;
   padding: 28px;
-  margin-bottom: 36px;
 }
 
-.res-archive-card:last-child {
-  margin-bottom: 0;
+/* 카드와 카드 사이에만 간격 */
+.res-archive-card + .res-archive-card {
+  margin-top: 40px;
 }
 
 .res-archive-meta {
@@ -896,12 +896,17 @@ section {
 
 /* ── 추천 자료 북 리스트 ── */
 .res-book-item {
-  padding: 24px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--divider);
 }
 
 .res-book-item:first-child {
   border-top: 1px solid var(--divider);
+}
+
+/* 책 항목과 항목 사이 추가 여백 */
+.res-book-item + .res-book-item {
+  padding-top: 28px;
 }
 
 .res-book-header {
