@@ -1379,6 +1379,178 @@ section {
   color: var(--text-title);
 }
 
+/* =============================================
+   커뮤니티 3단계 — 댓글 스타일
+   ============================================= */
+
+/* ── 댓글 영역 전체 wrapper ── */
+.comm-comment-area {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--divider);
+}
+
+/* ── 댓글 목록 ── */
+.comm-comment-list {
+  margin-bottom: 4px;
+}
+
+.comm-comment-loading {
+  font-size: 12px;
+  color: var(--text-point);
+  padding: 4px 0;
+}
+
+.comm-comment-empty {
+  font-size: 12px;
+  color: var(--text-point);
+  text-align: center;
+  padding: 8px 0;
+}
+
+/* 개별 댓글 */
+.comm-comment-item {
+  padding-top: 12px;
+}
+
+.comm-comment-item:first-child {
+  padding-top: 0;
+}
+
+.comm-comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.comm-comment-author {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-title);
+}
+
+.comm-comment-time {
+  font-size: 12px;
+  color: var(--text-point);
+}
+
+.comm-comment-content {
+  font-size: 13px;
+  color: var(--text-title);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+/* 본인 댓글 삭제 버튼 */
+.comm-comment-delete-btn {
+  background: none;
+  border: none;
+  font-size: 11px;
+  color: var(--text-point);
+  cursor: pointer;
+  padding: 0;
+  margin-left: auto;
+  transition: color 0.2s;
+}
+
+.comm-comment-delete-btn:hover {
+  color: var(--text-title);
+}
+
+/* ── 댓글 입력 영역 ── */
+.comm-comment-input-wrap {
+  margin-top: 12px;
+}
+
+/* "+ 댓글 달기" 버튼 */
+.comm-comment-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: var(--btn-primary);
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color 0.2s;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.comm-comment-toggle-btn:hover {
+  color: var(--text-title);
+}
+
+/* 댓글 폼 */
+.comm-comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.comm-comment-textarea {
+  width: 100%;
+  background-color: var(--bg-main);
+  border: 0.5px solid var(--divider);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.6;
+  color: var(--text-title);
+  resize: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.comm-comment-textarea:focus {
+  outline: none;
+  border-color: var(--text-point);
+}
+
+.comm-comment-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.comm-comment-cancel-btn {
+  background: transparent;
+  border: 0.5px solid var(--text-point);
+  color: var(--text-body);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.comm-comment-cancel-btn:hover {
+  background-color: var(--bg-accent);
+}
+
+.comm-comment-submit-btn {
+  background-color: var(--btn-primary);
+  color: var(--bg-main);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.comm-comment-submit-btn:hover:not(:disabled) {
+  background-color: #7A5124;
+}
+
+.comm-comment-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 /* ── 반응형 ── */
 @media (max-width: 768px) {
   .comm-page-title {

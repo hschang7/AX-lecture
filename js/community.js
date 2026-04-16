@@ -1,11 +1,10 @@
-/* community.js — Google 로그인/로그아웃 + 글 작성/조회/삭제 */
+/* community.js — 1~3단계 통합: 로그인/로그아웃 + 글쓰기/삭제 + 댓글 */
 
 /* ── 전역 상태 ── */
 let currentUser   = null;
 let currentFilter = 'all';
 let allPosts      = [];
 
-/* 카테고리 값 → 한글 */
 const CATEGORY_LABELS = {
   intro:  '자기소개',
   prompt: '프롬프트',
@@ -16,11 +15,11 @@ const CATEGORY_LABELS = {
 /* 상대 시간 포맷 */
 function relativeTime(isoStr) {
   const diff = Math.floor((Date.now() - new Date(isoStr).getTime()) / 1000);
-  if (diff < 60)            return '방금 전';
-  if (diff < 3600)          return `${Math.floor(diff / 60)}분 전`;
-  if (diff < 86400)         return `${Math.floor(diff / 3600)}시간 전`;
-  if (diff < 86400 * 2)     return '어제';
-  if (diff < 86400 * 30)    return `${Math.floor(diff / 86400)}일 전`;
+  if (diff < 60)          return '방금 전';
+  if (diff < 3600)        return `${Math.floor(diff / 60)}분 전`;
+  if (diff < 86400)       return `${Math.floor(diff / 3600)}시간 전`;
+  if (diff < 86400 * 2)   return '어제';
+  if (diff < 86400 * 30)  return `${Math.floor(diff / 86400)}일 전`;
   const d = new Date(isoStr);
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
 }
@@ -42,9 +41,9 @@ function updateAuthUI(user) {
     writeCollapsed.style.display = 'block';
 
     const meta = user.user_metadata || {};
-    avatar.src             = meta.avatar_url || '';
-    avatar.style.display   = meta.avatar_url ? 'block' : 'none';
-    userName.textContent   = meta.full_name || user.email;
+    avatar.src           = meta.avatar_url || '';
+    avatar.style.display = meta.avatar_url ? 'block' : 'none';
+    userName.textContent = meta.full_name || user.email;
   } else {
     loggedOut.style.display      = 'flex';
     loggedIn.style.display       = 'none';
@@ -85,32 +84,60 @@ function renderPosts() {
   container.style.display = 'block';
 
   filtered.forEach(post => {
-    const card = document.createElement('div');
-    card.className = 'comm-post-card';
-
-    const isOwn = currentUser && currentUser.id === post.user_id;
+    const isOwn    = currentUser && currentUser.id === post.user_id;
     const catLabel = CATEGORY_LABELS[post.category] || post.category;
 
+    const card = document.createElement('div');
+    card.className    = 'comm-post-card';
+    card.dataset.postId = post.id;
+
+    /* 카드 뼈대 — 사용자 텍스트 없이 구조만 */
     card.innerHTML = `
       <div class="comm-post-meta">
-        <span class="comm-post-badge">${catLabel}</span>
-        <span class="comm-post-author">${post.author_name} · ${relativeTime(post.created_at)}</span>
+        <span class="comm-post-badge"></span>
+        <span class="comm-post-author"></span>
       </div>
-      <h3 class="comm-post-title">${post.title}</h3>
-      <p class="comm-post-content">${post.content}</p>
-      ${isOwn ? `
-        <div class="comm-post-actions">
-          <button class="comm-delete-btn" data-id="${post.id}">삭제</button>
-        </div>` : ''}
+      <h3 class="comm-post-title"></h3>
+      <p class="comm-post-content"></p>
+      ${isOwn ? `<div class="comm-post-actions">
+        <button class="comm-delete-btn" data-id="${post.id}">삭제</button>
+      </div>` : ''}
+      <div class="comm-comment-area">
+        <div class="comm-comment-list" data-comments-for="${post.id}">
+          <p class="comm-comment-loading">댓글 불러오는 중...</p>
+        </div>
+        ${currentUser ? `
+          <div class="comm-comment-input-wrap">
+            <button class="comm-comment-toggle-btn" data-comment-toggle="${post.id}">+ 댓글 달기</button>
+            <div class="comm-comment-form" data-comment-form="${post.id}" style="display:none;">
+              <textarea class="comm-comment-textarea" data-comment-input="${post.id}" rows="2"
+                placeholder="댓글을 남겨주세요"></textarea>
+              <div class="comm-comment-form-actions">
+                <button class="comm-comment-cancel-btn" data-comment-cancel="${post.id}">취소</button>
+                <button class="comm-comment-submit-btn" data-comment-submit="${post.id}">올리기</button>
+              </div>
+            </div>
+          </div>` : ''}
+      </div>
     `;
 
-    /* 삭제 버튼 이벤트 */
+    /* 사용자 생성 텍스트 — textContent로 안전하게 삽입 (XSS 방지) */
+    card.querySelector('.comm-post-badge').textContent  = catLabel;
+    card.querySelector('.comm-post-author').textContent = `${post.author_name} · ${relativeTime(post.created_at)}`;
+    card.querySelector('.comm-post-title').textContent  = post.title;
+    card.querySelector('.comm-post-content').textContent = post.content;
+
+    /* 글 삭제 버튼 */
     if (isOwn) {
-      card.querySelector('.comm-delete-btn').addEventListener('click', () => deletePost(post.id));
+      card.querySelector('.comm-delete-btn')
+        .addEventListener('click', () => deletePost(post.id));
     }
 
     container.appendChild(card);
   });
+
+  /* 각 글의 댓글 병렬 로드 */
+  filtered.forEach(post => loadCommentsForPost(post.id));
 }
 
 /* ── 글 목록 불러오기 ── */
@@ -142,21 +169,19 @@ async function deletePost(postId) {
   if (!confirm('이 글을 삭제할까요?')) return;
 
   const { error } = await supabaseClient
-    .from('posts')
-    .delete()
+    .from('posts').delete()
     .eq('id', postId)
     .eq('user_id', currentUser.id);
 
   if (error) {
-    console.error('삭제 오류:', error);
+    console.error('글 삭제 오류:', error);
     alert('삭제 중 오류가 발생했습니다.');
     return;
   }
-
   await loadPosts();
 }
 
-/* ── 폼 열기/닫기 ── */
+/* ── 글쓰기 폼 열기/닫기 ── */
 function openWriteForm() {
   document.getElementById('write-collapsed').style.display = 'none';
   document.getElementById('write-form').style.display      = 'block';
@@ -167,9 +192,77 @@ function closeWriteForm() {
   document.getElementById('write-collapsed').style.display = 'block';
   document.getElementById('post-title').value   = '';
   document.getElementById('post-content').value = '';
-  /* 카테고리 초기화 */
   const first = document.querySelector('input[name="category"]');
   if (first) { first.checked = true; syncCategoryPills(); }
+}
+
+/* ── 댓글 불러오기 ── */
+async function loadCommentsForPost(postId) {
+  const listEl = document.querySelector(`[data-comments-for="${postId}"]`);
+  if (!listEl) return;
+
+  const { data, error } = await supabaseClient
+    .from('comments')
+    .select('*')
+    .eq('post_id', postId)
+    .order('created_at', { ascending: true });
+
+  listEl.innerHTML = '';
+
+  if (error) {
+    console.error('댓글 오류:', error);
+    const errEl = document.createElement('p');
+    errEl.className   = 'comm-comment-loading';
+    errEl.textContent = '댓글을 불러오지 못했습니다.';
+    listEl.appendChild(errEl);
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    const emptyEl = document.createElement('p');
+    emptyEl.className   = 'comm-comment-empty';
+    emptyEl.textContent = '아직 댓글이 없어요.';
+    listEl.appendChild(emptyEl);
+    return;
+  }
+
+  data.forEach(comment => {
+    const item = document.createElement('div');
+    item.className = 'comm-comment-item';
+
+    /* 헤더 라인: 작성자 + 시간 (+ 삭제 버튼) */
+    const header = document.createElement('div');
+    header.className = 'comm-comment-header';
+
+    const authorEl = document.createElement('span');
+    authorEl.className   = 'comm-comment-author';
+    authorEl.textContent = comment.author_name;           /* textContent — XSS 방지 */
+
+    const timeEl = document.createElement('span');
+    timeEl.className   = 'comm-comment-time';
+    timeEl.textContent = relativeTime(comment.created_at);
+
+    header.appendChild(authorEl);
+    header.appendChild(timeEl);
+
+    if (currentUser && currentUser.id === comment.user_id) {
+      const delBtn = document.createElement('button');
+      delBtn.className          = 'comm-comment-delete-btn';
+      delBtn.textContent        = '삭제';
+      delBtn.dataset.commentId  = comment.id;
+      delBtn.dataset.postId     = postId;
+      header.appendChild(delBtn);
+    }
+
+    /* 본문 */
+    const contentEl = document.createElement('p');
+    contentEl.className   = 'comm-comment-content';
+    contentEl.textContent = comment.content;              /* textContent — XSS 방지 */
+
+    item.appendChild(header);
+    item.appendChild(contentEl);
+    listEl.appendChild(item);
+  });
 }
 
 /* ── 메인 ── */
@@ -206,12 +299,12 @@ document.addEventListener('DOMContentLoaded', () => {
     else updateAuthUI(null);
   });
 
-  /* 글쓰기 폼 열기/닫기 */
+  /* 글쓰기 폼 */
   document.getElementById('open-write-form-btn').addEventListener('click', openWriteForm);
   document.getElementById('close-write-form-btn').addEventListener('click', closeWriteForm);
   document.getElementById('cancel-write-btn').addEventListener('click', closeWriteForm);
 
-  /* 카테고리 라디오 변경 */
+  /* 카테고리 라디오 */
   document.querySelectorAll('input[name="category"]').forEach(radio => {
     radio.addEventListener('change', syncCategoryPills);
   });
@@ -219,8 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* 글 올리기 */
   document.getElementById('submit-post-btn').addEventListener('click', async () => {
-    const title   = document.getElementById('post-title').value.trim();
-    const content = document.getElementById('post-content').value.trim();
+    const title    = document.getElementById('post-title').value.trim();
+    const content  = document.getElementById('post-content').value.trim();
     const category = document.querySelector('input[name="category"]:checked')?.value || 'intro';
 
     if (!title)   { alert('제목을 입력해 주세요.');  return; }
@@ -228,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btn = document.getElementById('submit-post-btn');
     btn.textContent = '올리는 중...';
-    btn.disabled = true;
+    btn.disabled    = true;
 
     const { error } = await supabaseClient.from('posts').insert({
       user_id:       currentUser.id,
@@ -240,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).select();
 
     btn.textContent = '올리기';
-    btn.disabled = false;
+    btn.disabled    = false;
 
     if (error) {
       console.error('글 작성 오류:', error);
@@ -260,6 +353,88 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       renderPosts();
     });
+  });
+
+  /* ── 댓글 이벤트 위임 ── */
+  document.getElementById('posts-container').addEventListener('click', async (e) => {
+    const t = e.target;
+
+    /* 댓글 달기 버튼 → 폼 열기 */
+    if (t.dataset.commentToggle) {
+      const postId = t.dataset.commentToggle;
+      t.style.display = 'none';
+      const form = document.querySelector(`[data-comment-form="${postId}"]`);
+      form.style.display = 'block';
+      form.querySelector(`[data-comment-input="${postId}"]`).focus();
+      return;
+    }
+
+    /* 취소 → 폼 닫기 */
+    if (t.dataset.commentCancel) {
+      const postId = t.dataset.commentCancel;
+      const form   = document.querySelector(`[data-comment-form="${postId}"]`);
+      form.style.display = 'none';
+      form.querySelector(`[data-comment-input="${postId}"]`).value = '';
+      document.querySelector(`[data-comment-toggle="${postId}"]`).style.display = 'inline-block';
+      return;
+    }
+
+    /* 댓글 올리기 */
+    if (t.dataset.commentSubmit) {
+      const postId  = t.dataset.commentSubmit;
+      const textarea = document.querySelector(`[data-comment-input="${postId}"]`);
+      const content  = textarea.value.trim();
+
+      if (!content) { alert('댓글 내용을 입력해주세요.'); return; }
+
+      t.textContent = '올리는 중...';
+      t.disabled    = true;
+
+      const { error } = await supabaseClient.from('comments').insert({
+        post_id:     postId,
+        user_id:     currentUser.id,
+        author_name: currentUser.user_metadata?.full_name || currentUser.email,
+        content,
+      });
+
+      t.textContent = '올리기';
+      t.disabled    = false;
+
+      if (error) {
+        console.error('댓글 작성 오류:', error);
+        alert('댓글을 올리는 중 오류가 발생했습니다.');
+        return;
+      }
+
+      const form = document.querySelector(`[data-comment-form="${postId}"]`);
+      form.style.display = 'none';
+      textarea.value     = '';
+      document.querySelector(`[data-comment-toggle="${postId}"]`).style.display = 'inline-block';
+
+      await loadCommentsForPost(postId);
+      return;
+    }
+
+    /* 댓글 삭제 */
+    if (t.dataset.commentId) {
+      const commentId = t.dataset.commentId;
+      const postId    = t.dataset.postId;
+
+      if (!confirm('이 댓글을 삭제할까요?')) return;
+
+      const { error } = await supabaseClient
+        .from('comments').delete()
+        .eq('id', commentId);
+
+      if (error) {
+        console.error('댓글 삭제 오류:', error);
+        alert('댓글 삭제 중 오류가 발생했습니다.');
+        return;
+      }
+
+      await loadCommentsForPost(postId);
+      return;
+    }
   });
 
   /* 초기 글 목록 로드 */
