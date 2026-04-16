@@ -32,7 +32,7 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 300;
   line-height: 1.8;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 a {
@@ -73,7 +73,7 @@ img {
 /* 로고 */
 .logo {
   font-family: 'Noto Serif KR', serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text-title);
   letter-spacing: 0.5px;
@@ -87,7 +87,7 @@ img {
 }
 
 .nav-menu a {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 300;
   color: var(--text-body);
   transition: color 0.2s;
@@ -140,7 +140,7 @@ section {
 
 .hero-label {
   display: inline-block;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
   color: var(--text-point);
   text-transform: lowercase;
@@ -149,7 +149,7 @@ section {
 
 .hero-title {
   font-family: 'Noto Serif KR', serif;
-  font-size: 34px;
+  font-size: 38px;
   font-weight: 700;
   color: var(--text-title);
   line-height: 1.55;
@@ -157,7 +157,7 @@ section {
 }
 
 .hero-sub {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-body);
   line-height: 1.9;
   margin-bottom: 40px;
@@ -176,7 +176,7 @@ section {
   display: inline-block;
   padding: 12px 28px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   border-radius: 4px;
   cursor: pointer;
@@ -216,7 +216,7 @@ section {
 }
 
 .section-label {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
   color: var(--text-point);
   text-transform: uppercase;
@@ -241,7 +241,7 @@ section {
 
 .lecture-card-title {
   font-family: 'Noto Serif KR', serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text-title);
   margin-bottom: 8px;
@@ -249,7 +249,7 @@ section {
 }
 
 .lecture-card-meta {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-point);
   letter-spacing: 0.3px;
 }
@@ -257,7 +257,7 @@ section {
 /* 신청 링크 */
 .lecture-card-cta {
   white-space: nowrap;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--btn-primary);
   border-bottom: 1px solid var(--btn-primary);
@@ -279,13 +279,13 @@ section {
 }
 
 .footer-copy {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-body);
   margin-bottom: 6px;
 }
 
 .footer-email {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-point);
 }
 
@@ -309,7 +309,7 @@ section {
 
 /* 섹션 헤더 — 라벨 + 본문 묶음 */
 .about-label {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
   color: var(--text-point);
   text-transform: uppercase;
@@ -352,7 +352,7 @@ section {
 }
 
 .profile-small-label {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 2px;
   color: var(--text-point);
   text-transform: lowercase;
@@ -361,7 +361,7 @@ section {
 
 .profile-name {
   font-family: 'Noto Serif KR', serif;
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
   color: var(--text-title);
   margin-bottom: 10px;
@@ -369,14 +369,14 @@ section {
 
 .profile-identity {
   font-family: 'Noto Serif KR', serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   color: var(--text-body);
 }
 
 /* ── 2) 인사말 ── */
 .greeting-body {
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.9;
   color: var(--text-body);
   max-width: 640px;
@@ -403,7 +403,7 @@ section {
 .timeline-period {
   width: 130px;
   flex-shrink: 0;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-point);
   padding-top: 2px;
 }
@@ -413,14 +413,14 @@ section {
 }
 
 .timeline-org {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--text-title);
   margin-bottom: 3px;
 }
 
 .timeline-role {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-body);
 }
 
@@ -445,12 +445,12 @@ section {
 .board-label {
   width: 40px;
   flex-shrink: 0;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-point);
 }
 
 .board-companies {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-title);
   line-height: 1.8;
 }
@@ -483,13 +483,13 @@ section {
 .edu-period {
   width: 130px;
   flex-shrink: 0;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-point);
   padding-top: 2px;
 }
 
 .edu-content {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-title);
 }
 
@@ -501,7 +501,7 @@ section {
 
 .topic-item {
   font-family: 'Noto Serif KR', serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400;
   color: var(--text-title);
   padding: 24px 0;
@@ -517,7 +517,7 @@ section {
 }
 
 .topic-num {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   color: var(--text-point);
   flex-shrink: 0;
@@ -526,7 +526,7 @@ section {
 
 /* ── 7) 외부 자료 ── */
 .news-desc {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-body);
   margin-bottom: 24px;
   line-height: 1.9;
@@ -540,7 +540,7 @@ section {
 
 /* ── 8) 연락처 ── */
 .contact-email {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--btn-primary);
   display: inline-block;
@@ -555,7 +555,7 @@ section {
 }
 
 .contact-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-body);
 }
 
@@ -569,14 +569,14 @@ section {
 
 .coming-soon-title {
   font-family: 'Noto Serif KR', serif;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--text-title);
   margin-bottom: 16px;
 }
 
 .coming-soon-desc {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-body);
 }
 
@@ -623,7 +623,7 @@ section {
   }
 
   .hero-title {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   /* 강연 카드 세로 배치 */
@@ -657,7 +657,7 @@ section {
 
   /* about — 강연 주제 모바일 */
   .topic-item {
-    font-size: 17px;
+    font-size: 19px;
     padding: 20px 0;
   }
 }
