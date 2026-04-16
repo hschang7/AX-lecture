@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <!-- ── 상단 네비게이션 ── -->
   <header class="site-header">
     <nav class="container nav-inner">
       <a href="index.html" class="logo">홍성 · AX</a>
@@ -25,21 +26,208 @@
   </header>
 
   <main>
-    <section class="coming-soon">
+
+    <!-- ── 1) 프로필 섹션 ── -->
+    <section class="profile-section">
       <div class="container">
-        <h1 class="coming-soon-title">강연자 소개</h1>
-        <p class="coming-soon-desc">페이지를 준비 중입니다. 곧 찾아오겠습니다.</p>
+        <!-- images/profile.jpg 추가 시 아래 div를 img 태그로 교체 -->
+        <div class="profile-img-placeholder">사진</div>
+        <p class="profile-small-label">profile</p>
+        <h1 class="profile-name">장홍성</h1>
+        <p class="profile-identity">인공지능을 활용한 더 나은 미래를 꿈꾸는 사람</p>
       </div>
     </section>
+
+    <!-- ── 2) 인사말 섹션 ── -->
+    <section class="about-section">
+      <div class="container">
+        <p class="about-label">인사말</p>
+        <p class="greeting-body">
+          안녕하세요. 저는 SK텔레콤 임원과 한국인공지능산업협회장을 거쳐,
+          지금은 저의 작은 경험과 지식이 누군가의 새로운 시작에 실마리가 되기를
+          바라는 마음으로 이 공간을 엽니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 3) 경력 섹션 (타임라인) ── -->
+    <section class="about-section">
+      <div class="container">
+        <p class="about-label">경력</p>
+        <div class="timeline">
+
+          <div class="timeline-row">
+            <span class="timeline-period">2019.3 – 2025.2</span>
+            <div class="timeline-content">
+              <p class="timeline-org">한국인공지능산업협회</p>
+              <p class="timeline-role">회장 (5–7대)</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <span class="timeline-period">2020.1 – 2024.12</span>
+            <div class="timeline-content">
+              <p class="timeline-org">SK텔레콤</p>
+              <p class="timeline-role">IoT/데이터/광고 사업단장 (전무/부사장)</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <span class="timeline-period">2017.1 – 2019.12</span>
+            <div class="timeline-content">
+              <p class="timeline-org">SK텔레콤</p>
+              <p class="timeline-role">솔루션기술원장, 데이터기술원장 (상무)</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <span class="timeline-period">2012.1 – 2016.12</span>
+            <div class="timeline-content">
+              <p class="timeline-org">SK텔레콤</p>
+              <p class="timeline-role">Big Data 팀장, AI 랩장</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <span class="timeline-period">2010.1 – 2011.12</span>
+            <div class="timeline-content">
+              <p class="timeline-org">SK홀딩스</p>
+              <p class="timeline-role">신기술 신성장 투자 팀장</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <span class="timeline-period">1999.3 – 2005.7</span>
+            <div class="timeline-content">
+              <p class="timeline-org">삼성전자</p>
+              <p class="timeline-role">책임연구원</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 4) 이사회 활동 섹션 ── -->
+    <section class="about-section">
+      <div class="container">
+        <p class="about-label">이사회 활동</p>
+        <div class="board-list">
+
+          <div class="board-row">
+            <span class="board-label">현재</span>
+            <p class="board-companies">
+              코난테크놀로지<span class="sep">·</span>마키나락스
+            </p>
+          </div>
+
+          <div class="board-row">
+            <span class="board-label">이전</span>
+            <p class="board-companies">
+              인크로스<span class="sep">·</span>몰로코<span class="sep">·</span>SKP<span class="sep">·</span>통신대안평가<span class="sep">·</span>인바이츠헬스케어
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 5) 학력 섹션 ── -->
+    <section class="about-section">
+      <div class="container">
+        <p class="about-label">학력</p>
+        <div class="edu-list">
+
+          <div class="edu-row">
+            <span class="edu-period">1994.3 – 1999.8</span>
+            <p class="edu-content">서울대학교 컴퓨터공학 박사</p>
+          </div>
+
+          <div class="edu-row">
+            <span class="edu-period">1992.3 – 1994.2</span>
+            <p class="edu-content">서울대학교 컴퓨터공학 석사</p>
+          </div>
+
+          <div class="edu-row">
+            <span class="edu-period">1988.3 – 1992.2</span>
+            <p class="edu-content">서울대학교 컴퓨터공학 학사</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 6) 강연 주제 섹션 ── -->
+    <section class="about-section">
+      <div class="container">
+        <p class="about-label">주요 강연 주제</p>
+        <div class="topic-list">
+
+          <div class="topic-item">
+            <span class="topic-num">01</span>
+            인공지능 시대의 기업 경영
+          </div>
+
+          <div class="topic-item">
+            <span class="topic-num">02</span>
+            경영자가 배우는 바이브 코딩과 자동화 기술
+          </div>
+
+          <div class="topic-item">
+            <span class="topic-num">03</span>
+            같이 만들어 가는 AX 사례
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 7) 외부 자료 섹션 ── -->
+    <section class="about-section">
+      <div class="container">
+        <p class="about-label">뉴스와 인터뷰</p>
+        <p class="news-desc">
+          언론 인터뷰와 기고문은 아래 검색을 통해 확인하실 수 있습니다.
+        </p>
+        <div class="news-links">
+          <a
+            href="https://www.google.com/search?q=장홍성+SK텔레콤"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+          >구글에서 '장홍성' 검색</a>
+          <a
+            href="https://search.naver.com/search.naver?query=장홍성+SK텔레콤"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+          >네이버에서 '장홍성' 검색</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 8) 연락처 섹션 ── -->
+    <section class="about-section">
+      <div class="container">
+        <p class="about-label">문의</p>
+        <a href="mailto:hschang69@gmail.com" class="contact-email">hschang69@gmail.com</a>
+        <p class="contact-desc">이메일로 연락 주시면 빠른 시일 내에 회신드리겠습니다.</p>
+      </div>
+    </section>
+
   </main>
 
+  <!-- ── 푸터 ── -->
   <footer class="site-footer">
     <div class="container">
       <p class="footer-copy">© 2026 홍성. AX lecture space.</p>
-      <p class="footer-email"><a href="mailto:hschang69@gmail.com">hschang69@gmail.com</a></p>
+      <p class="footer-email">
+        <a href="mailto:hschang69@gmail.com">hschang69@gmail.com</a>
+      </p>
     </div>
   </footer>
 
+  <!-- 햄버거 메뉴 토글 스크립트 -->
   <script>
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
