@@ -7,14 +7,38 @@
       "time": "13:30",
       "location": "충남대학교 농업생명과학대학 2109호",
       "audience": "아이씨푸드 팀장급 이상",
-      "description": "식품소재 기업의 AX 전환 전략과 리더의 AI 리터러시"
+      "description": "식품소재 기업의 AX 전환 전략과 리더의 AI 리터러시",
+      "outline": [
+        "우리는 지금 어떤 시대에 살고 있는가",
+        "AX란 무엇인가 — DX와 무엇이 다른가",
+        "산업 전문가가 AI를 바라봐야 할 시각",
+        "리더를 위한 AI 실행 원칙과 리터러시",
+        "AI 도구 활용 실무 가이드"
+      ],
+      "key_messages": [
+        "AI는 이미 산업의 판도를 바꾸고 있다",
+        "AX는 단순 도구 도입이 아닌 업무 방식 전체의 재설계다",
+        "AI를 쓰는 전문가가 AI를 쓰지 않는 전문가를 대체한다",
+        "리더도 AI를 직접 써봐야 한다. 직접 써봐야 팀을 제대로 이끌 수 있다"
+      ]
     },
     {
       "id": "2025-airport-ai-management",
       "title": "AI 시대의 기업 경영",
       "date": "2025-11-04",
       "location": "인천국제공항공사 본사",
-      "description": "AI 기술의 특성, 기업 경영 전략, AI가 만드는 미래"
+      "description": "AI 기술의 특성, 기업 경영 전략, AI가 만드는 미래",
+      "outline": [
+        "최근 인공지능 기술의 특성",
+        "AI 시대의 기업 경영",
+        "AI가 만드는 미래"
+      ],
+      "key_messages": [
+        "Know-it-all에서 Learn-it-all로 — AI 시대 인재상의 전환",
+        "Dream Team · Agile Culture · Gradual Success 3원칙",
+        "대기업 자산과 중소기업 강점의 결합 (X + AI)",
+        "단순히 해봤다가 아닌 제대로 해봤는가"
+      ]
     }
   ]
 }

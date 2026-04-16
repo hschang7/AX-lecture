@@ -736,6 +736,226 @@ section {
 }
 
 /* =============================================
+   resources 페이지 전용 스타일
+   ============================================= */
+
+/* ── 상단 헤더 ── */
+.res-header {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.res-page-label {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--text-point);
+  text-transform: lowercase;
+  margin-bottom: 20px;
+}
+
+.res-page-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text-title);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.res-page-sub {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.9;
+}
+
+/* ── 섹션 공통 ── */
+.res-section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.res-section--tinted {
+  background-color: var(--bg-accent);
+}
+
+.res-section-heading {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 8px;
+}
+
+.res-section-desc {
+  font-size: 14px;
+  color: var(--text-body);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.res-empty {
+  font-size: 15px;
+  color: var(--text-body);
+  padding: 24px 0;
+}
+
+/* ── 강연 아카이브 카드 ── */
+.res-archive-card {
+  background-color: var(--bg-main);
+  border: 0.5px solid var(--divider);
+  border-radius: 8px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.res-archive-card:last-child {
+  margin-bottom: 0;
+}
+
+.res-archive-meta {
+  font-size: 13px;
+  color: var(--text-point);
+  margin-bottom: 8px;
+}
+
+.res-archive-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-title);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* 소제목 라벨 (목차, 핵심 메시지) */
+.res-sub-label {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--text-point);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* 목차 번호 리스트 */
+.res-outline-list {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.res-outline-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-title);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--divider);
+  line-height: 1.6;
+}
+
+.res-outline-item:first-child {
+  border-top: 1px solid var(--divider);
+}
+
+.res-outline-num {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--text-point);
+  width: 16px;
+}
+
+/* 핵심 메시지 인용구 스타일 */
+.res-keymsg-list {
+  margin-bottom: 0;
+}
+
+.res-keymsg-item {
+  font-size: 14px;
+  color: var(--text-title);
+  line-height: 1.75;
+  padding-left: 14px;
+  border-left: 2px solid var(--text-point);
+  margin-bottom: 10px;
+}
+
+.res-keymsg-item:last-child {
+  margin-bottom: 0;
+}
+
+/* ── 인사이트 empty state ── */
+.res-insights-empty {
+  background-color: var(--bg-accent);
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+/* ── 추천 자료 북 리스트 ── */
+.res-book-item {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.res-book-item:first-child {
+  border-top: 1px solid var(--divider);
+}
+
+.res-book-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 8px;
+  margin-bottom: 6px;
+}
+
+.res-book-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-title);
+}
+
+.res-book-sep {
+  font-size: 13px;
+  color: var(--text-point);
+}
+
+.res-book-author {
+  font-size: 13px;
+  color: var(--text-point);
+}
+
+.res-book-note {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.7;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 768px) {
+  .res-page-title {
+    font-size: 26px;
+  }
+
+  .res-archive-card {
+    padding: 20px;
+  }
+
+  .res-book-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .res-book-sep {
+    display: none;
+  }
+}
+
+/* =============================================
    뼈대 페이지 — "준비 중" 영역
    ============================================= */
 .coming-soon {

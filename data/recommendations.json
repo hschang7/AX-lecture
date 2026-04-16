@@ -1,0 +1,34 @@
+{
+  "books": [
+    {
+      "title": "Cosmos",
+      "author": "Carl Sagan",
+      "note": "우주의 광대함이 삶의 겸손함을 가르친다. 과학과 인문의 경계를 허무는 통찰."
+    },
+    {
+      "title": "Origins",
+      "author": "Lewis Dartnell",
+      "note": "지구가 인류 문명을 어떻게 빚어냈는가에 대한 이야기."
+    },
+    {
+      "title": "The Selfish Gene",
+      "author": "Richard Dawkins",
+      "note": "생명과 유전자를 바라보는 관점을 근본부터 바꿔놓는 책."
+    },
+    {
+      "title": "최초의 질문",
+      "author": "이정동",
+      "note": "기술 선진국의 조건은 무엇인가. 진정한 혁신은 도전적 질문에서 시작된다."
+    },
+    {
+      "title": "피터 드러커의 최고의 질문",
+      "author": "피터 드러커",
+      "note": "질문이 없다면 통찰도 없다. 리더가 늘 품고 있어야 할 다섯 가지 질문."
+    },
+    {
+      "title": "AI 쇼크, 다가올 미래",
+      "author": "모 가댓",
+      "note": "초대형 AI와 어떻게 공존할 것인가에 대한 구글X 전 CEO의 시선."
+    }
+  ]
+}

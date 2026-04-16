@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <!-- ── 상단 네비게이션 ── -->
   <header class="site-header">
     <nav class="container nav-inner">
       <a href="index.html" class="logo">홍성 · AX</a>
@@ -25,21 +26,58 @@
   </header>
 
   <main>
-    <section class="coming-soon">
+
+    <!-- ── 상단 헤더 ── -->
+    <section class="res-header">
       <div class="container">
-        <h1 class="coming-soon-title">자료실</h1>
-        <p class="coming-soon-desc">페이지를 준비 중입니다. 곧 찾아오겠습니다.</p>
+        <span class="res-page-label">resources</span>
+        <h1 class="res-page-title">생각과 참고 자료를 기록하는 공간</h1>
+        <p class="res-page-sub">
+          강연에서 나눈 핵심 메시지, 생각, 그리고 참고한 자료들을 남깁니다.
+        </p>
       </div>
     </section>
+
+    <!-- ── 섹션 1: 강연 아카이브 ── -->
+    <section class="res-section">
+      <div class="container">
+        <h2 class="res-section-heading">강연 아카이브</h2>
+        <p class="res-section-desc">지난 강연의 목차와 핵심 메시지를 남깁니다.</p>
+        <div id="lecture-archive"></div>
+      </div>
+    </section>
+
+    <!-- ── 섹션 2: 인사이트 ── -->
+    <section class="res-section res-section--tinted">
+      <div class="container">
+        <h2 class="res-section-heading">인사이트</h2>
+        <p class="res-section-desc">강연에서 반복적으로 나누는 생각들을 글로 정리합니다.</p>
+        <div id="insights"></div>
+      </div>
+    </section>
+
+    <!-- ── 섹션 3: 참고한 자료 ── -->
+    <section class="res-section">
+      <div class="container">
+        <h2 class="res-section-heading">참고한 자료</h2>
+        <p class="res-section-desc">AX를 이해하는 여정에 도움이 되었던 책들.</p>
+        <div id="recommendations"></div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- ── 푸터 ── -->
   <footer class="site-footer">
     <div class="container">
       <p class="footer-copy">© 2026 홍성. AX lecture space.</p>
-      <p class="footer-email"><a href="mailto:hschang69@gmail.com">hschang69@gmail.com</a></p>
+      <p class="footer-email">
+        <a href="mailto:hschang69@gmail.com">hschang69@gmail.com</a>
+      </p>
     </div>
   </footer>
 
+  <script src="js/resources.js"></script>
   <script>
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
