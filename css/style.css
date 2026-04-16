@@ -961,6 +961,163 @@ section {
 }
 
 /* =============================================
+   community 페이지 전용 스타일
+   ============================================= */
+
+/* ── 상단 헤더 ── */
+.comm-header {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.comm-page-label {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--text-point);
+  text-transform: lowercase;
+  margin-bottom: 20px;
+}
+
+.comm-page-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text-title);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.comm-page-sub {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+/* ── 본문 섹션 ── */
+.comm-body {
+  padding: 56px 0 80px;
+}
+
+/* ── 로그인 상태 영역 ── */
+.comm-auth-section {
+  background-color: var(--bg-accent);
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 48px;
+}
+
+/* 로그아웃 상태 */
+.comm-logged-out {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.comm-auth-guide {
+  font-size: 14px;
+  color: var(--text-body);
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Google 로그인 버튼 */
+.comm-google-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--btn-primary);
+  color: var(--bg-main);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.comm-google-btn:hover {
+  background-color: #7A5124;
+}
+
+/* 로그인 상태 */
+.comm-logged-in {
+  align-items: center;
+  gap: 12px;
+}
+
+.comm-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.comm-user-name {
+  font-size: 14px;
+  color: var(--text-title);
+  flex: 1;
+}
+
+.comm-logout-btn {
+  background: transparent;
+  border: 0.5px solid var(--text-point);
+  color: var(--text-body);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.comm-logout-btn:hover {
+  background-color: var(--bg-main);
+}
+
+/* ── 게시글 영역 ── */
+.comm-posts-heading {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 20px;
+}
+
+.comm-posts-placeholder {
+  background-color: var(--bg-main);
+  border: 0.5px solid var(--divider);
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 768px) {
+  .comm-page-title {
+    font-size: 28px;
+  }
+
+  .comm-logged-out {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .comm-posts-placeholder {
+    padding: 28px 20px;
+  }
+}
+
+/* =============================================
    뼈대 페이지 — "준비 중" 영역
    ============================================= */
 .coming-soon {
