@@ -1,4 +1,4 @@
-/* community.js — 1~3단계 통합: 로그인/로그아웃 + 글쓰기/삭제 + 댓글 */
+/* community.js — 1~4단계: 로그인 + 글쓰기/삭제 + 댓글 + 글 수정 */
 
 /* ── 전역 상태 ── */
 let currentUser   = null;
@@ -15,11 +15,11 @@ const CATEGORY_LABELS = {
 /* 상대 시간 포맷 */
 function relativeTime(isoStr) {
   const diff = Math.floor((Date.now() - new Date(isoStr).getTime()) / 1000);
-  if (diff < 60)          return '방금 전';
-  if (diff < 3600)        return `${Math.floor(diff / 60)}분 전`;
-  if (diff < 86400)       return `${Math.floor(diff / 3600)}시간 전`;
-  if (diff < 86400 * 2)   return '어제';
-  if (diff < 86400 * 30)  return `${Math.floor(diff / 86400)}일 전`;
+  if (diff < 60)         return '방금 전';
+  if (diff < 3600)       return `${Math.floor(diff / 60)}분 전`;
+  if (diff < 86400)      return `${Math.floor(diff / 3600)}시간 전`;
+  if (diff < 86400 * 2)  return '어제';
+  if (diff < 86400 * 30) return `${Math.floor(diff / 86400)}일 전`;
   const d = new Date(isoStr);
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
 }
@@ -86,52 +86,79 @@ function renderPosts() {
   filtered.forEach(post => {
     const isOwn    = currentUser && currentUser.id === post.user_id;
     const catLabel = CATEGORY_LABELS[post.category] || post.category;
+    const pid      = post.id;
+
+    /* 수정됨 배지 계산 */
+    let editedBadge = '';
+    if (post.updated_at) {
+      const diff = Math.abs(new Date(post.updated_at) - new Date(post.created_at)) / 1000;
+      if (diff >= 60) editedBadge = ' · 수정됨';
+    }
 
     const card = document.createElement('div');
-    card.className    = 'comm-post-card';
-    card.dataset.postId = post.id;
+    card.className      = 'comm-post-card';
+    card.dataset.postId = pid;
 
-    /* 카드 뼈대 — 사용자 텍스트 없이 구조만 */
+    /* 카드 뼈대 — 구조만, 사용자 텍스트 없음 */
     card.innerHTML = `
       <div class="comm-post-meta">
         <span class="comm-post-badge"></span>
         <span class="comm-post-author"></span>
       </div>
+
+      <!-- 읽기 모드 -->
       <h3 class="comm-post-title"></h3>
       <p class="comm-post-content"></p>
-      ${isOwn ? `<div class="comm-post-actions">
-        <button class="comm-delete-btn" data-id="${post.id}">삭제</button>
-      </div>` : ''}
+
+      <!-- 수정 모드 (기본 숨김) -->
+      <div class="comm-edit-mode" data-edit-mode="${pid}" style="display:none;">
+        <input  type="text"
+                class="comm-input comm-edit-title"
+                data-edit-title="${pid}"
+                maxlength="80"
+                placeholder="제목">
+        <textarea class="comm-textarea comm-edit-content"
+                  data-edit-content="${pid}"
+                  rows="6"
+                  placeholder="내용"></textarea>
+        <div class="comm-edit-actions">
+          <button class="comm-edit-cancel-btn" data-edit-cancel="${pid}">취소</button>
+          <button class="comm-edit-save-btn"   data-edit-save="${pid}">저장</button>
+        </div>
+      </div>
+
+      ${isOwn ? `
+        <div class="comm-post-actions" data-post-actions="${pid}">
+          <button class="comm-edit-btn"   data-post-edit="${pid}">수정</button>
+          <button class="comm-delete-btn" data-delete-post="${pid}">삭제</button>
+        </div>` : ''}
+
+      <!-- 댓글 영역 -->
       <div class="comm-comment-area">
-        <div class="comm-comment-list" data-comments-for="${post.id}">
+        <div class="comm-comment-list" data-comments-for="${pid}">
           <p class="comm-comment-loading">댓글 불러오는 중...</p>
         </div>
         ${currentUser ? `
           <div class="comm-comment-input-wrap">
-            <button class="comm-comment-toggle-btn" data-comment-toggle="${post.id}">+ 댓글 달기</button>
-            <div class="comm-comment-form" data-comment-form="${post.id}" style="display:none;">
-              <textarea class="comm-comment-textarea" data-comment-input="${post.id}" rows="2"
+            <button class="comm-comment-toggle-btn" data-comment-toggle="${pid}">+ 댓글 달기</button>
+            <div class="comm-comment-form" data-comment-form="${pid}" style="display:none;">
+              <textarea class="comm-comment-textarea" data-comment-input="${pid}" rows="2"
                 placeholder="댓글을 남겨주세요"></textarea>
               <div class="comm-comment-form-actions">
-                <button class="comm-comment-cancel-btn" data-comment-cancel="${post.id}">취소</button>
-                <button class="comm-comment-submit-btn" data-comment-submit="${post.id}">올리기</button>
+                <button class="comm-comment-cancel-btn" data-comment-cancel="${pid}">취소</button>
+                <button class="comm-comment-submit-btn" data-comment-submit="${pid}">올리기</button>
               </div>
             </div>
           </div>` : ''}
       </div>
     `;
 
-    /* 사용자 생성 텍스트 — textContent로 안전하게 삽입 (XSS 방지) */
-    card.querySelector('.comm-post-badge').textContent  = catLabel;
-    card.querySelector('.comm-post-author').textContent = `${post.author_name} · ${relativeTime(post.created_at)}`;
-    card.querySelector('.comm-post-title').textContent  = post.title;
+    /* 사용자 생성 텍스트 — textContent 로 안전하게 삽입 (XSS 방지) */
+    card.querySelector('.comm-post-badge').textContent   = catLabel;
+    card.querySelector('.comm-post-author').textContent  =
+      `${post.author_name} · ${relativeTime(post.created_at)}${editedBadge}`;
+    card.querySelector('.comm-post-title').textContent   = post.title;
     card.querySelector('.comm-post-content').textContent = post.content;
-
-    /* 글 삭제 버튼 */
-    if (isOwn) {
-      card.querySelector('.comm-delete-btn')
-        .addEventListener('click', () => deletePost(post.id));
-    }
 
     container.appendChild(card);
   });
@@ -196,6 +223,30 @@ function closeWriteForm() {
   if (first) { first.checked = true; syncCategoryPills(); }
 }
 
+/* ── 수정 모드 진입 ── */
+function enterEditMode(card, post) {
+  const pid = post.id;
+  card.querySelector('.comm-post-title').style.display   = 'none';
+  card.querySelector('.comm-post-content').style.display = 'none';
+  const actions = card.querySelector(`[data-post-actions="${pid}"]`);
+  if (actions) actions.style.display = 'none';
+
+  const editMode = card.querySelector(`[data-edit-mode="${pid}"]`);
+  editMode.querySelector(`[data-edit-title="${pid}"]`).value   = post.title;   /* .value — input이므로 OK */
+  editMode.querySelector(`[data-edit-content="${pid}"]`).value = post.content;
+  editMode.style.display = 'block';
+  editMode.querySelector(`[data-edit-title="${pid}"]`).focus();
+}
+
+/* ── 수정 모드 종료 (취소) ── */
+function exitEditMode(card, pid) {
+  card.querySelector(`[data-edit-mode="${pid}"]`).style.display  = 'none';
+  card.querySelector('.comm-post-title').style.display           = '';
+  card.querySelector('.comm-post-content').style.display         = '';
+  const actions = card.querySelector(`[data-post-actions="${pid}"]`);
+  if (actions) actions.style.display = 'flex';
+}
+
 /* ── 댓글 불러오기 ── */
 async function loadCommentsForPost(postId) {
   const listEl = document.querySelector(`[data-comments-for="${postId}"]`);
@@ -211,32 +262,31 @@ async function loadCommentsForPost(postId) {
 
   if (error) {
     console.error('댓글 오류:', error);
-    const errEl = document.createElement('p');
-    errEl.className   = 'comm-comment-loading';
-    errEl.textContent = '댓글을 불러오지 못했습니다.';
-    listEl.appendChild(errEl);
+    const el = document.createElement('p');
+    el.className = 'comm-comment-loading';
+    el.textContent = '댓글을 불러오지 못했습니다.';
+    listEl.appendChild(el);
     return;
   }
 
   if (!data || data.length === 0) {
-    const emptyEl = document.createElement('p');
-    emptyEl.className   = 'comm-comment-empty';
-    emptyEl.textContent = '아직 댓글이 없어요.';
-    listEl.appendChild(emptyEl);
+    const el = document.createElement('p');
+    el.className   = 'comm-comment-empty';
+    el.textContent = '아직 댓글이 없어요.';
+    listEl.appendChild(el);
     return;
   }
 
   data.forEach(comment => {
-    const item = document.createElement('div');
+    const item   = document.createElement('div');
     item.className = 'comm-comment-item';
 
-    /* 헤더 라인: 작성자 + 시간 (+ 삭제 버튼) */
     const header = document.createElement('div');
     header.className = 'comm-comment-header';
 
     const authorEl = document.createElement('span');
     authorEl.className   = 'comm-comment-author';
-    authorEl.textContent = comment.author_name;           /* textContent — XSS 방지 */
+    authorEl.textContent = comment.author_name;     /* textContent — XSS 방지 */
 
     const timeEl = document.createElement('span');
     timeEl.className   = 'comm-comment-time';
@@ -247,17 +297,16 @@ async function loadCommentsForPost(postId) {
 
     if (currentUser && currentUser.id === comment.user_id) {
       const delBtn = document.createElement('button');
-      delBtn.className          = 'comm-comment-delete-btn';
-      delBtn.textContent        = '삭제';
-      delBtn.dataset.commentId  = comment.id;
-      delBtn.dataset.postId     = postId;
+      delBtn.className         = 'comm-comment-delete-btn';
+      delBtn.textContent       = '삭제';
+      delBtn.dataset.commentId = comment.id;
+      delBtn.dataset.postId    = postId;
       header.appendChild(delBtn);
     }
 
-    /* 본문 */
     const contentEl = document.createElement('p');
     contentEl.className   = 'comm-comment-content';
-    contentEl.textContent = comment.content;              /* textContent — XSS 방지 */
+    contentEl.textContent = comment.content;        /* textContent — XSS 방지 */
 
     item.appendChild(header);
     item.appendChild(contentEl);
@@ -355,11 +404,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── 댓글 이벤트 위임 ── */
+  /* ── posts-container 이벤트 위임 (댓글 + 글 수정) ── */
   document.getElementById('posts-container').addEventListener('click', async (e) => {
-    const t = e.target;
+    const t    = e.target;
+    const card = t.closest('.comm-post-card');
 
-    /* 댓글 달기 버튼 → 폼 열기 */
+    /* ── 글 삭제 ── */
+    if (t.dataset.deletePost) {
+      await deletePost(t.dataset.deletePost);
+      return;
+    }
+
+    /* ── 수정 모드 진입 ── */
+    if (t.dataset.postEdit) {
+      const post = allPosts.find(p => String(p.id) === String(t.dataset.postEdit));
+      if (post && card) enterEditMode(card, post);
+      return;
+    }
+
+    /* ── 수정 취소 ── */
+    if (t.dataset.editCancel) {
+      if (card) exitEditMode(card, t.dataset.editCancel);
+      return;
+    }
+
+    /* ── 수정 저장 ── */
+    if (t.dataset.editSave) {
+      const pid      = t.dataset.editSave;
+      const post     = allPosts.find(p => String(p.id) === String(pid));
+      const editMode = card?.querySelector(`[data-edit-mode="${pid}"]`);
+      if (!post || !editMode) return;
+
+      const newTitle   = editMode.querySelector(`[data-edit-title="${pid}"]`).value.trim();
+      const newContent = editMode.querySelector(`[data-edit-content="${pid}"]`).value.trim();
+
+      if (!newTitle || !newContent) {
+        alert('제목과 내용을 입력해주세요.');
+        return;
+      }
+
+      /* 변경 없으면 그냥 닫기 */
+      if (newTitle === post.title && newContent === post.content) {
+        exitEditMode(card, pid);
+        return;
+      }
+
+      t.textContent = '저장 중...';
+      t.disabled    = true;
+
+      const { error } = await supabaseClient
+        .from('posts')
+        .update({ title: newTitle, content: newContent, updated_at: new Date().toISOString() })
+        .eq('id', pid);
+
+      t.textContent = '저장';
+      t.disabled    = false;
+
+      if (error) {
+        console.error('수정 오류:', error);
+        alert('수정 중 오류가 발생했습니다.');
+        return;
+      }
+
+      await loadPosts();
+      return;
+    }
+
+    /* ── 댓글 달기 버튼 → 폼 열기 ── */
     if (t.dataset.commentToggle) {
       const postId = t.dataset.commentToggle;
       t.style.display = 'none';
@@ -369,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    /* 취소 → 폼 닫기 */
+    /* ── 댓글 취소 ── */
     if (t.dataset.commentCancel) {
       const postId = t.dataset.commentCancel;
       const form   = document.querySelector(`[data-comment-form="${postId}"]`);
@@ -379,9 +490,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    /* 댓글 올리기 */
+    /* ── 댓글 올리기 ── */
     if (t.dataset.commentSubmit) {
-      const postId  = t.dataset.commentSubmit;
+      const postId   = t.dataset.commentSubmit;
       const textarea = document.querySelector(`[data-comment-input="${postId}"]`);
       const content  = textarea.value.trim();
 
@@ -415,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    /* 댓글 삭제 */
+    /* ── 댓글 삭제 ── */
     if (t.dataset.commentId) {
       const commentId = t.dataset.commentId;
       const postId    = t.dataset.postId;
