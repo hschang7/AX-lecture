@@ -1,0 +1,20 @@
+{
+  "lectures": [
+    {
+      "id": "2026-icfood-ax",
+      "title": "아이씨푸드의 담대한 AX 도전과 찬란한 미래",
+      "date": "2026-04-22",
+      "time": "13:30",
+      "location": "충남대학교 농업생명과학대학 2109호",
+      "audience": "아이씨푸드 팀장급 이상",
+      "description": "식품소재 기업의 AX 전환 전략과 리더의 AI 리터러시"
+    },
+    {
+      "id": "2025-airport-ai-management",
+      "title": "AI 시대의 기업 경영",
+      "date": "2025-11-04",
+      "location": "인천국제공항공사 본사",
+      "description": "AI 기술의 특성, 기업 경영 전략, AI가 만드는 미래"
+    }
+  ]
+}
