@@ -806,7 +806,7 @@ section {
   border: 0.5px solid var(--divider);
   border-radius: 8px;
   padding: 28px;
-  margin-bottom: 20px;
+  margin-bottom: 36px;
 }
 
 .res-archive-card:last-child {
@@ -896,7 +896,7 @@ section {
 
 /* ── 추천 자료 북 리스트 ── */
 .res-book-item {
-  padding: 18px 0;
+  padding: 24px 0;
   border-bottom: 1px solid var(--divider);
 }
 
