@@ -2,7 +2,7 @@
 
 const DAYS = ['일', '월', '화', '수', '목', '금', '토'];
 
-/* YYYY-MM-DD 문자열을 "YYYY.MM.DD 요일" 형식으로 변환 */
+/* YYYY-MM-DD → "YYYY.MM.DD 요일" */
 function formatDateLong(dateStr) {
   const [y, m, d] = dateStr.split('-').map(Number);
   const day = DAYS[new Date(y, m - 1, d).getDay()];
@@ -32,33 +32,40 @@ function todayStr() {
   return `${y}-${m}-${d}`;
 }
 
-/* 메타 항목 HTML — 라벨 + 값 */
-function metaItem(label, value) {
-  return `
-    <div class="lec-meta-item">
-      <span class="lec-meta-label">${label}</span>
-      <span class="lec-meta-value">${value}</span>
-    </div>`;
-}
-
 /* 다가오는 강연 카드 */
 function renderUpcoming(lecture) {
   const card = document.createElement('div');
   card.className = 'lec-upcoming-card';
 
-  const meta = [
-    lecture.time ? metaItem('시간', formatTime(lecture.time)) : '',
-    lecture.location ? metaItem('장소', lecture.location) : '',
-    lecture.audience ? metaItem('대상', lecture.audience) : '',
-  ].join('');
+  /* 메타 항목 조립 */
+  const metaItems = [];
+  if (lecture.time) {
+    metaItems.push(`
+      <div class="lec-meta-item">
+        <span class="lec-meta-label">시간</span>
+        <span class="lec-meta-value">${formatTime(lecture.time)}</span>
+      </div>`);
+  }
+  if (lecture.location) {
+    metaItems.push(`
+      <div class="lec-meta-item">
+        <span class="lec-meta-label">장소</span>
+        <span class="lec-meta-value">${lecture.location}</span>
+      </div>`);
+  }
+  if (lecture.audience) {
+    metaItems.push(`
+      <div class="lec-meta-item">
+        <span class="lec-meta-label">대상</span>
+        <span class="lec-meta-value">${lecture.audience}</span>
+      </div>`);
+  }
 
   card.innerHTML = `
-    <div class="lec-upcoming-main">
-      <span class="lec-date-badge">${formatDateLong(lecture.date)}</span>
-      <h3 class="lec-upcoming-title">${lecture.title}</h3>
-      ${lecture.description ? `<p class="lec-upcoming-desc">${lecture.description}</p>` : ''}
-    </div>
-    <div class="lec-upcoming-meta">${meta}</div>
+    <span class="lec-date-badge">${formatDateLong(lecture.date)}</span>
+    <h3 class="lec-upcoming-title">${lecture.title}</h3>
+    ${lecture.description ? `<p class="lec-upcoming-desc">${lecture.description}</p>` : ''}
+    ${metaItems.length ? `<div class="lec-upcoming-meta">${metaItems.join('')}</div>` : ''}
   `;
   return card;
 }
@@ -77,15 +84,13 @@ function renderPast(lecture) {
   return row;
 }
 
-/* 메시지 표시 헬퍼 */
+/* 메시지 표시 */
 function showMessage(containerId, text) {
   const el = document.getElementById(containerId);
-  if (el) {
-    el.innerHTML = `<p class="lec-empty">${text}</p>`;
-  }
+  if (el) el.innerHTML = `<p class="lec-empty">${text}</p>`;
 }
 
-/* 메인 진입점 */
+/* 메인 */
 document.addEventListener('DOMContentLoaded', () => {
   const today = todayStr();
 

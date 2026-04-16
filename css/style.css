@@ -571,7 +571,7 @@ section {
 
 .lec-page-label {
   display: inline-block;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 2px;
   color: var(--text-point);
   text-transform: lowercase;
@@ -588,7 +588,7 @@ section {
 }
 
 .lec-page-sub {
-  font-size: 17px;
+  font-size: 15px;
   color: var(--text-body);
   line-height: 1.9;
 }
@@ -618,24 +618,17 @@ section {
   padding: 24px 0;
 }
 
-/* ── 다가오는 강연 카드 ── */
+/* ── 다가오는 강연 카드 (단일 컬럼) ── */
 .lec-upcoming-card {
   background-color: var(--bg-main);
   border: 0.5px solid var(--divider);
   border-radius: 8px;
   padding: 24px;
-  display: flex;
-  gap: 32px;
-  align-items: flex-start;
   margin-bottom: 16px;
 }
 
 .lec-upcoming-card:last-child {
   margin-bottom: 0;
-}
-
-.lec-upcoming-main {
-  flex: 1;
 }
 
 .lec-date-badge {
@@ -655,31 +648,30 @@ section {
 }
 
 .lec-upcoming-desc {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--text-body);
   line-height: 1.7;
+  margin-bottom: 16px;
 }
 
-/* 메타 정보 영역 */
+/* 메타 정보 — 가로 나열 */
 .lec-upcoming-meta {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex-shrink: 0;
-  min-width: 160px;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--divider);
 }
 
 .lec-meta-item {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .lec-meta-label {
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-size: 12px;
   color: var(--text-point);
-  text-transform: uppercase;
 }
 
 .lec-meta-value {
@@ -714,7 +706,7 @@ section {
 }
 
 .lec-past-title {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--text-title);
   margin-bottom: 4px;
   line-height: 1.5;
@@ -725,50 +717,10 @@ section {
   color: var(--text-body);
 }
 
-/* ── 강연 요청 CTA ── */
-.lec-cta {
-  background-color: var(--bg-accent);
-  padding: 56px 0;
-}
-
-.lec-cta-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.lec-cta-title {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-title);
-  margin-bottom: 8px;
-}
-
-.lec-cta-desc {
-  font-size: 15px;
-  color: var(--text-body);
-}
-
 /* ── 반응형 ── */
 @media (max-width: 768px) {
   .lec-page-title {
     font-size: 26px;
-  }
-
-  /* 다가오는 강연 카드: 세로 배치 */
-  .lec-upcoming-card {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .lec-upcoming-meta {
-    min-width: 0;
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px 24px;
   }
 
   /* 지난 강연 행: 세로 배치 */
@@ -780,13 +732,6 @@ section {
 
   .lec-past-date {
     width: auto;
-  }
-
-  /* CTA: 세로 배치 */
-  .lec-cta-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
   }
 }
 
