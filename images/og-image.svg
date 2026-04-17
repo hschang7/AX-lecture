@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+
+  <!-- 배경 -->
+  <rect width="1200" height="630" fill="#FAF5EC"/>
+
+  <!-- 좌측 강조선 -->
+  <rect x="80" y="195" width="3" height="200" fill="#A37A42" opacity="0.4"/>
+
+  <!-- 라벨 -->
+  <text
+    x="96" y="218"
+    font-family="'Noto Sans KR', sans-serif"
+    font-size="22"
+    font-weight="400"
+    fill="#A37A42"
+    letter-spacing="4"
+  >AI TRANSFORMATION SPACE</text>
+
+  <!-- 메인 타이틀 -->
+  <text
+    x="96" y="320"
+    font-family="'Noto Serif KR', 'Malgun Gothic', serif"
+    font-size="88"
+    font-weight="500"
+    fill="#3D2E1F"
+  >장홍성의 AX 공간</text>
+
+  <!-- 서브 타이틀 -->
+  <text
+    x="96" y="378"
+    font-family="'Noto Sans KR', sans-serif"
+    font-size="32"
+    font-weight="400"
+    fill="#6B5842"
+  >AI 시대의 생각과 실천을 함께 나눕니다</text>
+
+  <!-- URL -->
+  <text
+    x="96" y="432"
+    font-family="'Noto Sans KR', sans-serif"
+    font-size="24"
+    font-weight="400"
+    fill="#8C5E2A"
+    letter-spacing="1"
+  >chang-hongsung.com</text>
+
+  <!-- 우하단 장식: 원형 패턴 -->
+  <g opacity="0.15" fill="#A37A42">
+    <circle cx="1100" cy="560" r="120"/>
+    <circle cx="1160" cy="500" r="90"/>
+    <circle cx="1040" cy="520" r="70"/>
+    <circle cx="1130" cy="610" r="60"/>
+    <circle cx="1060" cy="590" r="45"/>
+  </g>
+
+</svg>
