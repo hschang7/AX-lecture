@@ -73,14 +73,9 @@ function renderInterviewsEmpty() {
 
   const main = document.createElement('p');
   main.className = 'ins-interview-empty-main';
-  main.textContent = 'AX 분야 창업자와 전문가 10여 분과의 심층 인터뷰를 진행했습니다.';
-
-  const sub = document.createElement('p');
-  sub.className = 'ins-interview-empty-sub';
-  sub.textContent = '대화의 결실은 곧 책의 형태로 선보일 예정이며, 이 공간에는 책에 실린 대화의 일부를 소개할 계획입니다.';
+  main.textContent = '준비 중입니다.';
 
   wrap.appendChild(main);
-  wrap.appendChild(sub);
   return wrap;
 }
 
