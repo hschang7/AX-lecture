@@ -2181,4 +2181,103 @@ section {
     font-size: 19px;
     padding: 20px 0;
   }
+
+  /* 홈 — CTA 카드 모바일 */
+  .cta-cards {
+    flex-direction: column;
+  }
+}
+
+/* ── about — 뉴스와 인터뷰 재설계 ── */
+.news-block-primary {
+  margin-bottom: 24px;
+}
+
+.news-desc-primary {
+  font-size: 14px;
+  color: #3D2E1F;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.news-lectures-link {
+  font-size: 13px;
+  color: #8C5E2A;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.news-lectures-link:hover {
+  color: #3D2E1F;
+}
+
+.news-block-secondary {
+  margin-top: 0;
+}
+
+.news-desc-secondary {
+  font-size: 14px;
+  color: #6B5842;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+/* ── 홈 — CTA 카드 섹션 ── */
+.cta-cards-section {
+  padding: 64px 0 80px;
+}
+
+.cta-cards {
+  display: flex;
+  gap: 16px;
+}
+
+.cta-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #FAF5EC;
+  border: 0.5px solid #E8DDC7;
+  border-radius: 8px;
+  padding: 24px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s;
+}
+
+.cta-card:hover {
+  background-color: #F5EEE1;
+}
+
+.cta-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #A37A42;
+  text-transform: lowercase;
+}
+
+.cta-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  color: #3D2E1F;
+  font-weight: 500;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.cta-desc {
+  font-size: 14px;
+  color: #6B5842;
+  line-height: 1.7;
+  margin-top: 8px;
+  flex: 1;
+}
+
+.cta-more {
+  display: block;
+  font-size: 13px;
+  color: #8C5E2A;
+  margin-top: 16px;
 }
