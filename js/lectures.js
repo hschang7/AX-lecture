@@ -139,6 +139,43 @@ function renderPastCard(lecture) {
     const expand = document.createElement('div');
     expand.className = 'lec-expand';
 
+    /* 강연 정보 섹션 — description 또는 audience가 있을 때만 추가 */
+    if (lecture.description || lecture.audience) {
+      const infoSection = document.createElement('div');
+      infoSection.className = 'lec-info-section';
+
+      const infoLabel = document.createElement('p');
+      infoLabel.className = 'lec-expand-label';
+      infoLabel.textContent = '강연 정보';
+      infoSection.appendChild(infoLabel);
+
+      if (lecture.description) {
+        const desc = document.createElement('p');
+        desc.className = 'lec-info-desc';
+        desc.textContent = lecture.description;
+        infoSection.appendChild(desc);
+      }
+
+      if (lecture.audience) {
+        const audienceRow = document.createElement('div');
+        audienceRow.className = 'lec-info-audience';
+
+        const audienceLabel = document.createElement('span');
+        audienceLabel.className = 'lec-info-audience-label';
+        audienceLabel.textContent = '대상';
+
+        const audienceValue = document.createElement('span');
+        audienceValue.className = 'lec-info-audience-value';
+        audienceValue.textContent = lecture.audience;
+
+        audienceRow.appendChild(audienceLabel);
+        audienceRow.appendChild(audienceValue);
+        infoSection.appendChild(audienceRow);
+      }
+
+      expand.appendChild(infoSection);
+    }
+
     if (hasOutline) {
       const label = document.createElement('p');
       label.className = 'lec-expand-label';
