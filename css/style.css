@@ -736,6 +736,161 @@ section {
 }
 
 /* =============================================
+   lectures 통합 타임라인 스타일
+   ============================================= */
+
+/* ── 타임라인 섹션 ── */
+.lec-body {
+  padding: 56px 0 80px;
+}
+
+/* ── 카드 공통 ── */
+.lec-card {
+  border: 0.5px solid var(--divider);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.lec-card:last-child {
+  margin-bottom: 0;
+}
+
+/* ── 다가오는 강연 카드 ── */
+.lec-card--upcoming {
+  background-color: var(--bg-main);
+  border-left: 3px solid var(--btn-primary);
+  padding-left: 21px;
+}
+
+.lec-card-upcoming-label {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: var(--text-point);
+  text-transform: lowercase;
+  margin-bottom: 10px;
+}
+
+/* ── 지난 강연 카드 ── */
+.lec-card--past {
+  background: transparent;
+  opacity: 0.85;
+}
+
+.lec-card--past.lec-card--expandable {
+  opacity: 1;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.lec-card--past.lec-card--expandable:hover {
+  background-color: var(--bg-main);
+}
+
+/* ── 카드 헤더 (날짜 + 제목 + 토글) ── */
+.lec-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.lec-card-main {
+  flex: 1;
+}
+
+.lec-card-date {
+  font-size: 13px;
+  color: var(--text-point);
+  margin-bottom: 6px;
+}
+
+.lec-card-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-title);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.lec-card-location {
+  font-size: 14px;
+  color: var(--text-body);
+}
+
+.lec-card-toggle {
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--text-point);
+  padding-top: 4px;
+  user-select: none;
+  line-height: 1;
+}
+
+/* ── 펼침 영역 ── */
+.lec-expand {
+  display: none;
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid var(--divider);
+}
+
+.lec-expand.open {
+  display: block;
+}
+
+.lec-expand-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--text-point);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  margin-top: 20px;
+}
+
+.lec-expand-label:first-child {
+  margin-top: 0;
+}
+
+/* ── 언론 보도 항목 ── */
+.lec-news-item {
+  margin-bottom: 12px;
+}
+
+.lec-news-item:last-child {
+  margin-bottom: 0;
+}
+
+.lec-news-meta {
+  font-size: 13px;
+  color: var(--text-point);
+  margin-bottom: 3px;
+}
+
+.lec-news-link {
+  font-size: 14px;
+  color: var(--text-title);
+  transition: color 0.2s;
+}
+
+.lec-news-link:hover {
+  text-decoration: underline;
+  color: var(--btn-primary);
+}
+
+/* ── 반응형 ── */
+@media (max-width: 768px) {
+  .lec-card {
+    padding: 20px;
+  }
+
+  .lec-card--upcoming {
+    padding-left: 17px;
+  }
+}
+
+/* =============================================
    resources 페이지 전용 스타일
    ============================================= */
 
@@ -957,6 +1112,222 @@ section {
 
   .res-book-sep {
     display: none;
+  }
+}
+
+/* =============================================
+   insights 페이지 전용 스타일
+   ============================================= */
+
+/* ── 상단 헤더 ── */
+.ins-header {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.ins-page-label {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--text-point);
+  text-transform: lowercase;
+  margin-bottom: 20px;
+}
+
+.ins-page-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text-title);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.ins-page-sub {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+/* ── 섹션 공통 ── */
+.ins-section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.ins-section:last-of-type {
+  border-bottom: none;
+}
+
+.ins-section--tinted {
+  background-color: var(--bg-accent);
+}
+
+.ins-section-heading {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-title);
+  margin-bottom: 8px;
+}
+
+.ins-section-desc {
+  font-size: 15px;
+  color: var(--text-body);
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+/* ── 인터뷰 빈 상태 ── */
+.ins-interview-empty {
+  background-color: var(--bg-accent);
+  border-radius: 8px;
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.ins-interview-empty-main {
+  font-size: 14px;
+  color: var(--text-title);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.ins-interview-empty-sub {
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+/* ── 인터뷰 카드 ── */
+.ins-interview-card {
+  background-color: var(--bg-main);
+  border: 0.5px solid var(--divider);
+  border-radius: 8px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.ins-interview-card:last-child {
+  margin-bottom: 0;
+}
+
+.ins-interviewee-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ins-interviewee-photo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.ins-interviewee-initial {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--divider);
+  color: var(--btn-primary);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ins-interviewee-name {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-title);
+  margin-bottom: 4px;
+}
+
+.ins-interviewee-title {
+  font-size: 13px;
+  color: var(--text-body);
+}
+
+.ins-interview-headline {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 20px;
+  color: var(--text-title);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.ins-interview-quote {
+  border-left: 2px solid var(--text-point);
+  padding-left: 14px;
+  font-size: 15px;
+  color: var(--text-title);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.ins-interview-summary {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.ins-interview-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.ins-interview-tag {
+  background-color: var(--bg-accent);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  color: var(--text-body);
+}
+
+.ins-interview-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--divider);
+}
+
+.ins-interview-date {
+  font-size: 13px;
+  color: var(--text-point);
+}
+
+.ins-interview-read-more {
+  font-size: 14px;
+  color: var(--btn-primary);
+  transition: opacity 0.2s;
+}
+
+.ins-interview-read-more:hover {
+  opacity: 0.7;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 768px) {
+  .ins-page-title {
+    font-size: 26px;
+  }
+
+  .ins-interview-card {
+    padding: 20px;
+  }
+
+  .ins-interview-empty {
+    padding: 28px 20px;
   }
 }
 

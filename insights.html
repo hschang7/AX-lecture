@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인사이트 · 홍성 AX</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── 상단 네비게이션 ── -->
+  <header class="site-header">
+    <nav class="container nav-inner">
+      <a href="index.html" class="logo">홍성 · AX</a>
+      <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="lectures.html">강연</a></li>
+        <li><a href="insights.html" class="active">인사이트</a></li>
+        <li><a href="community.html">커뮤니티</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── 상단 헤더 ── -->
+    <section class="ins-header">
+      <div class="container">
+        <span class="ins-page-label">insights</span>
+        <h1 class="ins-page-title">생각과 대화를 기록하는 공간</h1>
+        <p class="ins-page-sub">
+          저의 생각을 글로 남기고, 영감을 준 자료를 소개하고,<br>
+          AX 분야 전문가들과 나눈 대화를 기록합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 섹션 1: 인사이트 ── -->
+    <section class="ins-section">
+      <div class="container">
+        <h2 class="ins-section-heading">인사이트</h2>
+        <p class="ins-section-desc">강연에서 반복적으로 나누는 생각들을 글로 정리합니다.</p>
+        <div id="insights"></div>
+      </div>
+    </section>
+
+    <!-- ── 섹션 2: 추천 도서와 자료 ── -->
+    <section class="ins-section ins-section--tinted">
+      <div class="container">
+        <h2 class="ins-section-heading">추천 도서와 자료</h2>
+        <p class="ins-section-desc">AX를 이해하는 여정에 도움이 되었던 책들.</p>
+        <div id="recommendations"></div>
+      </div>
+    </section>
+
+    <!-- ── 섹션 3: 인터뷰 ── -->
+    <section class="ins-section">
+      <div class="container">
+        <h2 class="ins-section-heading">인터뷰</h2>
+        <p class="ins-section-desc">AX 분야의 전문가들과 나눈 깊이 있는 대화를 기록합니다.</p>
+        <div id="interviews"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── 푸터 ── -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-copy">© 2026 홍성. AX lecture space.</p>
+      <p class="footer-email">
+        <a href="mailto:hschang69@gmail.com">hschang69@gmail.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/insights.js"></script>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

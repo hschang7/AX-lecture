@@ -1,0 +1,217 @@
+/* insights.js — 인사이트 페이지 렌더링 (인사이트 / 추천 도서와 자료 / 인터뷰) */
+
+/* ── 인사이트(본인 글) 렌더링 ── */
+function renderInsights(articles) {
+  const container = document.getElementById('insights');
+
+  if (!articles || articles.length === 0) {
+    container.innerHTML = `
+      <div class="res-insights-empty">
+        앞으로 이 공간에 짧은 글들을 차곡차곡 기록해 갈 예정입니다.
+      </div>`;
+    return;
+  }
+
+  articles.forEach(article => {
+    const el = document.createElement('div');
+    el.className = 'res-article-card';
+    const h3 = document.createElement('h3');
+    h3.textContent = article.title;
+    el.appendChild(h3);
+    container.appendChild(el);
+  });
+}
+
+/* ── 추천 도서와 자료 렌더링 ── */
+function renderRecommendations(books) {
+  const container = document.getElementById('recommendations');
+
+  if (!books || books.length === 0) {
+    container.innerHTML = '<p class="res-empty">등록된 자료가 없습니다.</p>';
+    return;
+  }
+
+  books.forEach(book => {
+    const item = document.createElement('div');
+    item.className = 'res-book-item';
+
+    const header = document.createElement('div');
+    header.className = 'res-book-header';
+
+    const titleEl = document.createElement('span');
+    titleEl.className = 'res-book-title';
+    titleEl.textContent = book.title;
+
+    const sep = document.createElement('span');
+    sep.className = 'res-book-sep';
+    sep.textContent = '·';
+
+    const authorEl = document.createElement('span');
+    authorEl.className = 'res-book-author';
+    authorEl.textContent = book.author;
+
+    header.appendChild(titleEl);
+    header.appendChild(sep);
+    header.appendChild(authorEl);
+    item.appendChild(header);
+
+    if (book.note) {
+      const note = document.createElement('p');
+      note.className = 'res-book-note';
+      note.textContent = book.note;
+      item.appendChild(note);
+    }
+
+    container.appendChild(item);
+  });
+}
+
+/* ── 인터뷰 빈 상태 ── */
+function renderInterviewsEmpty() {
+  const wrap = document.createElement('div');
+  wrap.className = 'ins-interview-empty';
+
+  const main = document.createElement('p');
+  main.className = 'ins-interview-empty-main';
+  main.textContent = 'AX 분야 창업자와 전문가 10여 분과의 심층 인터뷰를 진행했습니다.';
+
+  const sub = document.createElement('p');
+  sub.className = 'ins-interview-empty-sub';
+  sub.textContent = '대화의 결실은 곧 책의 형태로 선보일 예정이며, 이 공간에는 책에 실린 대화의 일부를 소개할 계획입니다.';
+
+  wrap.appendChild(main);
+  wrap.appendChild(sub);
+  return wrap;
+}
+
+/* ── 인터뷰 카드 (데이터 추가 시 활성화) ── */
+function renderInterviewCard(interview) {
+  const card = document.createElement('div');
+  card.className = 'ins-interview-card';
+
+  /* 인터뷰이 행 */
+  const personRow = document.createElement('div');
+  personRow.className = 'ins-interviewee-row';
+
+  if (interview.interviewee_photo) {
+    const img = document.createElement('img');
+    img.className = 'ins-interviewee-photo';
+    img.src = interview.interviewee_photo;
+    img.alt = interview.interviewee_name || '';
+    personRow.appendChild(img);
+  } else {
+    const initial = document.createElement('div');
+    initial.className = 'ins-interviewee-initial';
+    initial.textContent = (interview.interviewee_name || '?').charAt(0);
+    personRow.appendChild(initial);
+  }
+
+  const info = document.createElement('div');
+  const nameEl = document.createElement('p');
+  nameEl.className = 'ins-interviewee-name';
+  nameEl.textContent = interview.interviewee_name || '';
+
+  const titleEl = document.createElement('p');
+  titleEl.className = 'ins-interviewee-title';
+  titleEl.textContent = interview.interviewee_title || '';
+
+  info.appendChild(nameEl);
+  info.appendChild(titleEl);
+  personRow.appendChild(info);
+  card.appendChild(personRow);
+
+  /* 헤드라인 */
+  if (interview.headline) {
+    const hl = document.createElement('h3');
+    hl.className = 'ins-interview-headline';
+    hl.textContent = interview.headline;
+    card.appendChild(hl);
+  }
+
+  /* 핵심 인용구 */
+  if (interview.key_quote) {
+    const quote = document.createElement('p');
+    quote.className = 'ins-interview-quote';
+    quote.textContent = `"${interview.key_quote}"`;
+    card.appendChild(quote);
+  }
+
+  /* 요약 */
+  if (interview.summary) {
+    const summary = document.createElement('p');
+    summary.className = 'ins-interview-summary';
+    summary.textContent = interview.summary;
+    card.appendChild(summary);
+  }
+
+  /* 태그 */
+  if (Array.isArray(interview.tags) && interview.tags.length > 0) {
+    const tagsWrap = document.createElement('div');
+    tagsWrap.className = 'ins-interview-tags';
+    interview.tags.forEach(tag => {
+      const span = document.createElement('span');
+      span.className = 'ins-interview-tag';
+      span.textContent = tag;
+      tagsWrap.appendChild(span);
+    });
+    card.appendChild(tagsWrap);
+  }
+
+  /* 하단 메타 */
+  const footer = document.createElement('div');
+  footer.className = 'ins-interview-footer';
+
+  const dateEl = document.createElement('span');
+  dateEl.className = 'ins-interview-date';
+  dateEl.textContent = interview.date || '';
+  footer.appendChild(dateEl);
+
+  if (interview.url) {
+    const readMore = document.createElement('a');
+    readMore.className = 'ins-interview-read-more';
+    readMore.href = interview.url;
+    readMore.textContent = '전문 읽기 →';
+    readMore.target = '_blank';
+    readMore.rel = 'noopener noreferrer';
+    footer.appendChild(readMore);
+  }
+
+  card.appendChild(footer);
+  return card;
+}
+
+/* ── 인터뷰 렌더링 ── */
+function renderInterviews(interviews) {
+  const container = document.getElementById('interviews');
+
+  if (!interviews || interviews.length === 0) {
+    container.appendChild(renderInterviewsEmpty());
+    return;
+  }
+
+  interviews.forEach(item => container.appendChild(renderInterviewCard(item)));
+}
+
+/* ── 에러 메시지 ── */
+function showError(id, msg = '정보를 불러오지 못했습니다.') {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = `<p class="res-empty">${msg}</p>`;
+}
+
+/* ── 메인: 세 fetch 병렬 실행 ── */
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('data/insights.json')
+    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+    .then(d => renderInsights(d.articles))
+    .catch(() => showError('insights'));
+
+  fetch('data/recommendations.json')
+    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+    .then(d => renderRecommendations(d.books))
+    .catch(() => showError('recommendations'));
+
+  fetch('data/interviews.json')
+    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+    .then(d => renderInterviews(d.interviews))
+    .catch(() => showError('interviews'));
+});
