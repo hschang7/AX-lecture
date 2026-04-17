@@ -85,12 +85,21 @@ function renderUpcomingCard(lecture) {
   return card;
 }
 
+/* 펼칠 콘텐츠 존재 여부 판별 */
+function hasExpandableContent(lecture) {
+  return (
+    (Array.isArray(lecture.outline)       && lecture.outline.length > 0)       ||
+    (Array.isArray(lecture.key_messages)  && lecture.key_messages.length > 0)  ||
+    (Array.isArray(lecture.news_coverage) && lecture.news_coverage.length > 0)
+  );
+}
+
 /* 지난 강연 카드 */
 function renderPastCard(lecture) {
   const hasOutline   = Array.isArray(lecture.outline)        && lecture.outline.length > 0;
   const hasMessages  = Array.isArray(lecture.key_messages)   && lecture.key_messages.length > 0;
   const hasCoverage  = Array.isArray(lecture.news_coverage)  && lecture.news_coverage.length > 0;
-  const expandable   = hasOutline || hasMessages || hasCoverage;
+  const expandable   = hasExpandableContent(lecture);
 
   const card = document.createElement('div');
   card.className = 'lec-card lec-card--past' + (expandable ? ' lec-card--expandable' : '');
@@ -116,6 +125,14 @@ function renderPastCard(lecture) {
   }
 
   card.appendChild(header);
+
+  /* 하단 힌트 — expandable일 때만 DOM에 추가 */
+  if (expandable) {
+    const hint = document.createElement('p');
+    hint.className = 'lec-card-hint';
+    hint.textContent = '펼쳐서 목차와 핵심 메시지 보기 ▾';
+    card.appendChild(hint);
+  }
 
   /* 펼침 영역 */
   if (expandable) {
@@ -202,8 +219,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!card) return;
     const expand = card.querySelector('.lec-expand');
     const toggle = card.querySelector('.lec-card-toggle');
+    const hint   = card.querySelector('.lec-card-hint');
     const isOpen = expand.classList.contains('open');
     expand.classList.toggle('open', !isOpen);
     if (toggle) toggle.textContent = isOpen ? '▾' : '▴';
+    if (hint)   hint.style.display = isOpen ? '' : 'none';
   });
 });

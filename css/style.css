@@ -828,6 +828,14 @@ section {
   line-height: 1;
 }
 
+/* ── 카드 하단 힌트 (expandable일 때만 렌더링) ── */
+.lec-card-hint {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-point);
+  pointer-events: none;
+}
+
 /* ── 펼침 영역 ── */
 .lec-expand {
   display: none;
