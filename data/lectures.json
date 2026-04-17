@@ -23,6 +23,35 @@
       ]
     },
     {
+      "id": "2021-11-kma-leaders-forum",
+      "title": "AI Everywhere 시대에 무엇을 어떻게 할 것인가?",
+      "date": "2021-11-12",
+      "location": "한국능률협회 리더스포럼 161회",
+      "audience": "기업 CEO 및 리더",
+      "description": "디지털 전환을 넘어 AI가 모든 산업에 확산되는 시대, 경영자는 무엇을 준비하고 어떻게 실행할 것인가",
+      "outline": [
+        "Introduction — AI의 Hype Cycle과 인공지능/기계학습/딥러닝의 관계",
+        "Why AI? — DT & AI Everywhere, Amazon Effect, 유니콘 클럽의 확장",
+        "What to Do — AI 비즈니스 모델 캔버스, 비즈니스 AI 도입 5단계, AI+X",
+        "How to Do — Data-centric Approach, 경영자를 위한 4원칙"
+      ],
+      "key_messages": [
+        "디지털화(Digitization)와 디지털 트랜스포메이션(Digital Transformation)은 다르다. 전자는 생산성 향상, 후자는 새로운 비즈니스 모델 창출",
+        "AI = Applied Intelligence — 기술 그 자체가 아니라 비즈니스에 적용될 때 의미가 있다",
+        "AI는 AI 전문가와 도메인 전문가의 결합에서 나온다 — What we CAN change × What we NEED to change",
+        "기업의 90%가 PoC 단계에 그친다 — 데스밸리를 넘어서려면 Customization Cost · Small Data · PoC-Production Gap 세 가지 과제를 풀어야 한다",
+        "AI 시대의 경영자가 갖춰야 할 것은 Dream Team · Agile Culture · Gradual Success · DT Tools의 4원칙이다"
+      ],
+      "news_coverage": [
+        {
+          "outlet": "한국능률협회(KMA)",
+          "title": "[161회 리더스포럼] AI Everywhere 시대에 무엇을 어떻게 할 것인가?",
+          "url": "https://www.kma.or.kr/usrs/bbs/usrsBbsPstDtlForm.do?p_usrid=100189&p_bbs_id=225&p_pst_id=101908&p_edutype_cd=&p_crscd=&p_crsseq_id=&p_month=&p_return=MENU&CRSCD=&CRSSEQ_ID=&p_hmpgcd=30&p_device=P&mkey=34016",
+          "date": "2021-11-18"
+        }
+      ]
+    },
+    {
       "id": "2025-airport-ai-management",
       "title": "AI 시대의 기업 경영",
       "date": "2025-11-04",

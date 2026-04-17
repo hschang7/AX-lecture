@@ -39,7 +39,7 @@ function buildNewsCoverage(items) {
 
   const label = document.createElement('p');
   label.className = 'lec-expand-label';
-  label.textContent = '언론 보도';
+  label.textContent = '관련 보도 및 자료';
   wrap.appendChild(label);
 
   items.forEach(item => {
