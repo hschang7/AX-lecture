@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('google-login-btn').addEventListener('click', async () => {
     const { error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: window.location.origin + window.location.pathname },
+      options: { redirectTo: window.location.origin + '/' },
     });
     if (error) {
       console.error('로그인 오류:', error);

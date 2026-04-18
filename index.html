@@ -105,6 +105,13 @@
     </div>
   </footer>
 
+  <!-- OAuth 리다이렉트 처리: Supabase가 루트(/)로 돌아올 때 community.html로 전달 -->
+  <script>
+    if (window.location.hash && window.location.hash.includes('access_token')) {
+      window.location.replace('community.html' + window.location.hash);
+    }
+  </script>
+
   <!-- 햄버거 메뉴 토글 스크립트 -->
   <script>
     const hamburger = document.getElementById('hamburger');
