@@ -13,12 +13,59 @@ function renderInsights(articles) {
   }
 
   articles.forEach(article => {
-    const el = document.createElement('div');
-    el.className = 'res-article-card';
-    const h3 = document.createElement('h3');
-    h3.textContent = article.title;
-    el.appendChild(h3);
-    container.appendChild(el);
+    const card = document.createElement('article');
+    card.className = 'ins-article-card';
+
+    /* 메타 행: 날짜 + 카테고리 */
+    const meta = document.createElement('div');
+    meta.className = 'ins-article-meta';
+
+    if (article.date) {
+      const dateEl = document.createElement('span');
+      dateEl.className = 'ins-article-date';
+      dateEl.textContent = article.date;
+      meta.appendChild(dateEl);
+    }
+    if (article.category) {
+      const catEl = document.createElement('span');
+      catEl.className = 'ins-article-category';
+      catEl.textContent = article.category;
+      meta.appendChild(catEl);
+    }
+    card.appendChild(meta);
+
+    /* 제목 */
+    const title = document.createElement('h3');
+    title.className = 'ins-article-title';
+    title.textContent = article.title;
+    card.appendChild(title);
+
+    /* 본문 단락 */
+    if (Array.isArray(article.paragraphs)) {
+      const body = document.createElement('div');
+      body.className = 'ins-article-body';
+      article.paragraphs.forEach(text => {
+        const p = document.createElement('p');
+        p.textContent = text;
+        body.appendChild(p);
+      });
+      card.appendChild(body);
+    }
+
+    /* 태그 */
+    if (Array.isArray(article.tags) && article.tags.length > 0) {
+      const tagsWrap = document.createElement('div');
+      tagsWrap.className = 'ins-article-tags';
+      article.tags.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'ins-article-tag';
+        span.textContent = tag;
+        tagsWrap.appendChild(span);
+      });
+      card.appendChild(tagsWrap);
+    }
+
+    container.appendChild(card);
   });
 }
 
