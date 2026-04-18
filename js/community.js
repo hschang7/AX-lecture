@@ -1,5 +1,40 @@
 /* community.js — 1~4단계: 로그인 + 글쓰기/삭제 + 댓글 + 글 수정 */
 
+/* ── 본문 안전 렌더링: [텍스트](url) → <a> 변환, 나머지는 textContent ── */
+function renderContentWithLinks(rawText, container) {
+  const pattern = /\[([^\]]{1,100})\]\(([^)]{1,300})\)/g;
+  let lastIndex = 0;
+  let match;
+
+  while ((match = pattern.exec(rawText)) !== null) {
+    if (match.index > lastIndex) {
+      container.appendChild(document.createTextNode(rawText.slice(lastIndex, match.index)));
+    }
+
+    const linkText = match[1];
+    const url      = match[2];
+    const safe     = /^(https?:\/\/|[a-zA-Z0-9_-]+\.html)([\w\-./=?&#%]*)$/.test(url)
+                     && !/javascript:/i.test(url);
+
+    if (safe) {
+      const a = document.createElement('a');
+      a.textContent = linkText;
+      a.href        = url;
+      a.className   = 'comm-inline-link';
+      if (url.startsWith('http')) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
+      container.appendChild(a);
+    } else {
+      container.appendChild(document.createTextNode(match[0]));
+    }
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < rawText.length) {
+    container.appendChild(document.createTextNode(rawText.slice(lastIndex)));
+  }
+}
+
 /* ── 전역 상태 ── */
 let currentUser   = null;
 let currentFilter = 'all';
@@ -154,11 +189,11 @@ function renderPosts() {
     `;
 
     /* 사용자 생성 텍스트 — textContent 로 안전하게 삽입 (XSS 방지) */
-    card.querySelector('.comm-post-badge').textContent   = catLabel;
-    card.querySelector('.comm-post-author').textContent  =
+    card.querySelector('.comm-post-badge').textContent  = catLabel;
+    card.querySelector('.comm-post-author').textContent =
       `${post.author_name} · ${relativeTime(post.created_at)}${editedBadge}`;
-    card.querySelector('.comm-post-title').textContent   = post.title;
-    card.querySelector('.comm-post-content').textContent = post.content;
+    card.querySelector('.comm-post-title').textContent  = post.title;
+    renderContentWithLinks(post.content, card.querySelector('.comm-post-content'));
 
     container.appendChild(card);
   });

@@ -1811,6 +1811,16 @@ section {
   white-space: pre-wrap;
 }
 
+.comm-inline-link {
+  color: #8C5E2A;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.comm-inline-link:hover {
+  color: #3D2E1F;
+}
+
 .comm-post-actions {
   display: flex;
   justify-content: flex-end;
