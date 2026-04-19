@@ -16,6 +16,13 @@ function renderInsights(articles) {
     const card = document.createElement('article');
     card.className = 'ins-article-card';
 
+    /* 헤더 행: 클릭 영역 (메타 + 제목 + 토글 버튼) */
+    const header = document.createElement('div');
+    header.className = 'ins-article-header';
+
+    const headerLeft = document.createElement('div');
+    headerLeft.className = 'ins-article-header-left';
+
     /* 메타 행: 날짜 + 카테고리 */
     const meta = document.createElement('div');
     meta.className = 'ins-article-meta';
@@ -32,27 +39,41 @@ function renderInsights(articles) {
       catEl.textContent = article.category;
       meta.appendChild(catEl);
     }
-    card.appendChild(meta);
+    headerLeft.appendChild(meta);
 
     /* 제목 */
     const title = document.createElement('h3');
     title.className = 'ins-article-title';
     title.textContent = article.title;
-    card.appendChild(title);
+    headerLeft.appendChild(title);
 
-    /* 본문 단락 */
+    header.appendChild(headerLeft);
+
+    /* 토글 버튼 */
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'ins-article-toggle';
+    toggleBtn.textContent = '본문 보기';
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    header.appendChild(toggleBtn);
+
+    card.appendChild(header);
+
+    /* 본문 + 태그 (기본 숨김) */
+    const body = document.createElement('div');
+    body.className = 'ins-article-body';
+    body.hidden = true;
+
     if (Array.isArray(article.paragraphs)) {
-      const body = document.createElement('div');
-      body.className = 'ins-article-body';
+      const paras = document.createElement('div');
+      paras.className = 'ins-article-paragraphs';
       article.paragraphs.forEach(text => {
         const p = document.createElement('p');
         p.textContent = text;
-        body.appendChild(p);
+        paras.appendChild(p);
       });
-      card.appendChild(body);
+      body.appendChild(paras);
     }
 
-    /* 태그 */
     if (Array.isArray(article.tags) && article.tags.length > 0) {
       const tagsWrap = document.createElement('div');
       tagsWrap.className = 'ins-article-tags';
@@ -62,8 +83,21 @@ function renderInsights(articles) {
         span.textContent = tag;
         tagsWrap.appendChild(span);
       });
-      card.appendChild(tagsWrap);
+      body.appendChild(tagsWrap);
     }
+
+    card.appendChild(body);
+
+    /* 토글 동작 */
+    function toggle() {
+      const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      body.hidden = expanded;
+      toggleBtn.setAttribute('aria-expanded', String(!expanded));
+      toggleBtn.textContent = expanded ? '본문 보기' : '접기';
+      card.classList.toggle('ins-article-card--open', !expanded);
+    }
+
+    header.addEventListener('click', toggle);
 
     container.appendChild(card);
   });
