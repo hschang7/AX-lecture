@@ -136,55 +136,64 @@ function renderPosts() {
 
     /* 카드 뼈대 — 구조만, 사용자 텍스트 없음 */
     card.innerHTML = `
-      <div class="comm-post-meta">
-        <span class="comm-post-badge"></span>
-        <span class="comm-post-author"></span>
+      <!-- 헤더: 항상 표시 (클릭 시 본문 토글) -->
+      <div class="comm-post-header" data-post-toggle="${pid}">
+        <div class="comm-post-header-left">
+          <div class="comm-post-meta">
+            <span class="comm-post-badge"></span>
+            <span class="comm-post-author"></span>
+          </div>
+          <h3 class="comm-post-title"></h3>
+        </div>
+        <button class="comm-post-toggle-btn" data-post-toggle="${pid}">본문 보기</button>
       </div>
 
-      <!-- 읽기 모드 -->
-      <h3 class="comm-post-title"></h3>
-      <p class="comm-post-content"></p>
+      <!-- 본문 영역: 기본 숨김 -->
+      <div class="comm-post-body" data-post-body="${pid}" style="display:none;">
+        <!-- 읽기 모드 -->
+        <p class="comm-post-content"></p>
 
-      <!-- 수정 모드 (기본 숨김) -->
-      <div class="comm-edit-mode" data-edit-mode="${pid}" style="display:none;">
-        <input  type="text"
-                class="comm-input comm-edit-title"
-                data-edit-title="${pid}"
-                maxlength="80"
-                placeholder="제목">
-        <textarea class="comm-textarea comm-edit-content"
-                  data-edit-content="${pid}"
-                  rows="6"
-                  placeholder="내용"></textarea>
-        <div class="comm-edit-actions">
-          <button class="comm-edit-cancel-btn" data-edit-cancel="${pid}">취소</button>
-          <button class="comm-edit-save-btn"   data-edit-save="${pid}">저장</button>
+        <!-- 수정 모드 (기본 숨김) -->
+        <div class="comm-edit-mode" data-edit-mode="${pid}" style="display:none;">
+          <input  type="text"
+                  class="comm-input comm-edit-title"
+                  data-edit-title="${pid}"
+                  maxlength="80"
+                  placeholder="제목">
+          <textarea class="comm-textarea comm-edit-content"
+                    data-edit-content="${pid}"
+                    rows="6"
+                    placeholder="내용"></textarea>
+          <div class="comm-edit-actions">
+            <button class="comm-edit-cancel-btn" data-edit-cancel="${pid}">취소</button>
+            <button class="comm-edit-save-btn"   data-edit-save="${pid}">저장</button>
+          </div>
         </div>
-      </div>
 
-      ${isOwn ? `
-        <div class="comm-post-actions" data-post-actions="${pid}">
-          <button class="comm-edit-btn"   data-post-edit="${pid}">수정</button>
-          <button class="comm-delete-btn" data-delete-post="${pid}">삭제</button>
-        </div>` : ''}
-
-      <!-- 댓글 영역 -->
-      <div class="comm-comment-area">
-        <div class="comm-comment-list" data-comments-for="${pid}">
-          <p class="comm-comment-loading">댓글 불러오는 중...</p>
-        </div>
-        ${currentUser ? `
-          <div class="comm-comment-input-wrap">
-            <button class="comm-comment-toggle-btn" data-comment-toggle="${pid}">+ 댓글 달기</button>
-            <div class="comm-comment-form" data-comment-form="${pid}" style="display:none;">
-              <textarea class="comm-comment-textarea" data-comment-input="${pid}" rows="2"
-                placeholder="댓글을 남겨주세요"></textarea>
-              <div class="comm-comment-form-actions">
-                <button class="comm-comment-cancel-btn" data-comment-cancel="${pid}">취소</button>
-                <button class="comm-comment-submit-btn" data-comment-submit="${pid}">올리기</button>
-              </div>
-            </div>
+        ${isOwn ? `
+          <div class="comm-post-actions" data-post-actions="${pid}">
+            <button class="comm-edit-btn"   data-post-edit="${pid}">수정</button>
+            <button class="comm-delete-btn" data-delete-post="${pid}">삭제</button>
           </div>` : ''}
+
+        <!-- 댓글 영역 -->
+        <div class="comm-comment-area">
+          <div class="comm-comment-list" data-comments-for="${pid}">
+            <p class="comm-comment-loading">댓글 불러오는 중...</p>
+          </div>
+          ${currentUser ? `
+            <div class="comm-comment-input-wrap">
+              <button class="comm-comment-toggle-btn" data-comment-toggle="${pid}">+ 댓글 달기</button>
+              <div class="comm-comment-form" data-comment-form="${pid}" style="display:none;">
+                <textarea class="comm-comment-textarea" data-comment-input="${pid}" rows="2"
+                  placeholder="댓글을 남겨주세요"></textarea>
+                <div class="comm-comment-form-actions">
+                  <button class="comm-comment-cancel-btn" data-comment-cancel="${pid}">취소</button>
+                  <button class="comm-comment-submit-btn" data-comment-submit="${pid}">올리기</button>
+                </div>
+              </div>
+            </div>` : ''}
+        </div>
       </div>
     `;
 
@@ -261,13 +270,12 @@ function closeWriteForm() {
 /* ── 수정 모드 진입 ── */
 function enterEditMode(card, post) {
   const pid = post.id;
-  card.querySelector('.comm-post-title').style.display   = 'none';
   card.querySelector('.comm-post-content').style.display = 'none';
   const actions = card.querySelector(`[data-post-actions="${pid}"]`);
   if (actions) actions.style.display = 'none';
 
   const editMode = card.querySelector(`[data-edit-mode="${pid}"]`);
-  editMode.querySelector(`[data-edit-title="${pid}"]`).value   = post.title;   /* .value — input이므로 OK */
+  editMode.querySelector(`[data-edit-title="${pid}"]`).value   = post.title;
   editMode.querySelector(`[data-edit-content="${pid}"]`).value = post.content;
   editMode.style.display = 'block';
   editMode.querySelector(`[data-edit-title="${pid}"]`).focus();
@@ -276,7 +284,6 @@ function enterEditMode(card, post) {
 /* ── 수정 모드 종료 (취소) ── */
 function exitEditMode(card, pid) {
   card.querySelector(`[data-edit-mode="${pid}"]`).style.display  = 'none';
-  card.querySelector('.comm-post-title').style.display           = '';
   card.querySelector('.comm-post-content').style.display         = '';
   const actions = card.querySelector(`[data-post-actions="${pid}"]`);
   if (actions) actions.style.display = 'flex';
@@ -443,6 +450,20 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('posts-container').addEventListener('click', async (e) => {
     const t    = e.target;
     const card = t.closest('.comm-post-card');
+
+    /* ── 본문 토글 ── */
+    if (t.dataset.postToggle && !t.dataset.deletePost && !t.dataset.postEdit) {
+      const pid  = t.dataset.postToggle;
+      const body = card?.querySelector(`[data-post-body="${pid}"]`);
+      const btn  = card?.querySelector(`.comm-post-toggle-btn`);
+      if (!body || !btn) return;
+      const isOpen = body.style.display !== 'none';
+      body.style.display = isOpen ? 'none' : 'block';
+      btn.textContent    = isOpen ? '본문 보기' : '접기';
+      card.classList.toggle('comm-post-card--open', !isOpen);
+      if (!isOpen) loadCommentsForPost(pid);
+      return;
+    }
 
     /* ── 글 삭제 ── */
     if (t.dataset.deletePost) {

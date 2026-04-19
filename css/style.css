@@ -1764,21 +1764,39 @@ section {
   background-color: var(--bg-main);
   border: 0.5px solid var(--divider);
   border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 16px;
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s;
 }
 
 .comm-post-card:last-child {
   margin-bottom: 0;
 }
 
+.comm-post-card--open {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+/* 헤더: 항상 표시, 클릭 가능 */
+.comm-post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.comm-post-header-left {
+  flex: 1;
+  min-width: 0;
+}
+
 .comm-post-meta {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .comm-post-badge {
@@ -1797,11 +1815,40 @@ section {
 
 .comm-post-title {
   font-family: 'Noto Serif KR', serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--text-title);
-  margin-bottom: 8px;
+  margin: 0;
   line-height: 1.5;
+}
+
+.comm-post-header:hover .comm-post-title {
+  color: var(--accent, #8C5E2A);
+}
+
+/* 본문 보기 / 접기 버튼 */
+.comm-post-toggle-btn {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--text-point);
+  background: var(--divider);
+  border: none;
+  border-radius: 20px;
+  padding: 4px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.comm-post-toggle-btn:hover {
+  background: var(--border, #ddd);
+}
+
+/* 본문 영역 */
+.comm-post-body {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 0.5px solid var(--divider);
 }
 
 .comm-post-content {
