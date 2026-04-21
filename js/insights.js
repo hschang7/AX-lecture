@@ -12,6 +12,8 @@ function renderInsights(articles) {
     return;
   }
 
+  articles.sort((a, b) => b.date.localeCompare(a.date));
+
   articles.forEach(article => {
     const card = document.createElement('article');
     card.className = 'ins-article-card';
