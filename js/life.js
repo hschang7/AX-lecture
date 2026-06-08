@@ -1,13 +1,13 @@
-/* insights.js — 인사이트 페이지 렌더링 (인사이트 글 목록) */
+/* life.js — 삶 이야기 페이지 렌더링 (인생 소회·지혜 글 목록) */
 
-/* ── 인사이트(본인 글) 렌더링 ── */
-function renderInsights(articles) {
-  const container = document.getElementById('insights');
+/* ── 삶 이야기 글 렌더링 ── */
+function renderLifeArticles(articles) {
+  const container = document.getElementById('life-articles');
 
   if (!articles || articles.length === 0) {
     container.innerHTML = `
       <div class="res-insights-empty">
-        앞으로 이 공간에 짧은 글들을 차곡차곡 기록해 갈 예정입니다.
+        살아가며 떠오르는 생각들을 이 자리에 하나씩 적어 두려 합니다.
       </div>`;
     return;
   }
@@ -18,14 +18,12 @@ function renderInsights(articles) {
     const card = document.createElement('article');
     card.className = 'ins-article-card';
 
-    /* 헤더 행: 클릭 영역 (메타 + 제목 + 토글 버튼) */
     const header = document.createElement('div');
     header.className = 'ins-article-header';
 
     const headerLeft = document.createElement('div');
     headerLeft.className = 'ins-article-header-left';
 
-    /* 메타 행: 날짜 + 카테고리 */
     const meta = document.createElement('div');
     meta.className = 'ins-article-meta';
 
@@ -43,7 +41,6 @@ function renderInsights(articles) {
     }
     headerLeft.appendChild(meta);
 
-    /* 제목 */
     const title = document.createElement('h3');
     title.className = 'ins-article-title';
     title.textContent = article.title;
@@ -51,7 +48,6 @@ function renderInsights(articles) {
 
     header.appendChild(headerLeft);
 
-    /* 토글 버튼 */
     const toggleBtn = document.createElement('button');
     toggleBtn.className = 'ins-article-toggle';
     toggleBtn.textContent = '본문 보기';
@@ -60,7 +56,6 @@ function renderInsights(articles) {
 
     card.appendChild(header);
 
-    /* 본문 + 태그 (기본 숨김) */
     const body = document.createElement('div');
     body.className = 'ins-article-body';
     body.hidden = true;
@@ -90,7 +85,6 @@ function renderInsights(articles) {
 
     card.appendChild(body);
 
-    /* 토글 동작 */
     function toggle() {
       const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
       body.hidden = expanded;
@@ -106,15 +100,15 @@ function renderInsights(articles) {
 }
 
 /* ── 에러 메시지 ── */
-function showError(id, msg = '정보를 불러오지 못했습니다.') {
-  const el = document.getElementById(id);
+function showLifeError(msg = '정보를 불러오지 못했습니다.') {
+  const el = document.getElementById('life-articles');
   if (el) el.innerHTML = `<p class="res-empty">${msg}</p>`;
 }
 
-/* ── 메인: 인사이트 글 불러오기 ── */
+/* ── 메인: 삶 이야기 글 불러오기 ── */
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('data/insights.json')
+  fetch('data/life.json')
     .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-    .then(d => renderInsights(d.articles))
-    .catch(() => showError('insights'));
+    .then(d => renderLifeArticles(d.articles))
+    .catch(() => showLifeError());
 });

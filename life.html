@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>강연 · 장홍성의 AX 공간</title>
-  <meta name="description" content="기업, 공공기관, 학교 등 다양한 자리에서 AX에 관한 생각을 나눈 강연 기록. 2021년부터 현재까지의 발자취.">
-  <meta property="og:title" content="강연 · 장홍성의 AX 공간">
-  <meta property="og:description" content="함께했던, 그리고 앞으로 이어질 이야기들">
-  <meta property="og:url" content="https://chang-hongsung.com/lectures.html">
+  <title>삶 이야기 · 장홍성의 AX 공간</title>
+  <meta name="description" content="살아가며 느끼는 소회와 지혜를 담담히 기록하는 공간. 장홍성의 일상의 사유와 인생 단상을 남깁니다.">
+  <meta property="og:title" content="삶 이야기 · 장홍성의 AX 공간">
+  <meta property="og:description" content="살아가며 느끼는 소회와 지혜를 담담히 기록하는 공간">
+  <meta property="og:url" content="https://chang-hongsung.com/life.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://chang-hongsung.com/images/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -31,9 +31,9 @@
       <ul class="nav-menu" id="nav-menu">
         <li><a href="index.html">홈</a></li>
         <li><a href="about.html">소개</a></li>
-        <li><a href="lectures.html" class="active">강연</a></li>
+        <li><a href="lectures.html">강연</a></li>
         <li><a href="insights.html">인사이트</a></li>
-        <li><a href="life.html">삶 이야기</a></li>
+        <li><a href="life.html" class="active">삶 이야기</a></li>
       </ul>
     </nav>
   </header>
@@ -41,20 +41,20 @@
   <main>
 
     <!-- ── 상단 헤더 ── -->
-    <section class="lec-header">
+    <section class="ins-header">
       <div class="container">
-        <span class="lec-page-label">lectures</span>
-        <h1 class="lec-page-title">함께했던, 그리고 앞으로 이어질 이야기들</h1>
-        <p class="lec-page-sub">
-          기업, 공공기관, 학교 등 다양한 자리에서 AX에 관한 생각을 나누고 있습니다.
+        <span class="ins-page-label">life</span>
+        <h1 class="ins-page-title">삶을 살아가며 남기는 기록</h1>
+        <p class="ins-page-sub">
+          살아가며 느끼는 소회와 작은 지혜를 담담히 적어 둡니다.
         </p>
       </div>
     </section>
 
-    <!-- ── 통합 타임라인 ── -->
-    <section class="lec-body">
+    <!-- ── 삶 이야기 글 목록 ── -->
+    <section class="ins-section">
       <div class="container">
-        <div id="lecture-timeline"></div>
+        <div id="life-articles"></div>
       </div>
     </section>
 
@@ -74,7 +74,7 @@
     </div>
   </footer>
 
-  <script src="js/lectures.js"></script>
+  <script src="js/life.js"></script>
   <script>
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
