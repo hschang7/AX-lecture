@@ -64,9 +64,16 @@ function renderLifeArticles(articles) {
       const paras = document.createElement('div');
       paras.className = 'ins-article-paragraphs';
       article.paragraphs.forEach(text => {
-        const p = document.createElement('p');
-        p.textContent = text;
-        paras.appendChild(p);
+        if (typeof text === 'string' && text.startsWith('## ')) {
+          const h = document.createElement('h4');
+          h.className = 'ins-article-subhead';
+          h.textContent = text.slice(3).trim();
+          paras.appendChild(h);
+        } else {
+          const p = document.createElement('p');
+          p.textContent = text;
+          paras.appendChild(p);
+        }
       });
       body.appendChild(paras);
     }

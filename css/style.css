@@ -2480,6 +2480,20 @@ section {
   margin-bottom: 0;
 }
 
+/* 본문 소제목 (## 표기 단락) */
+.ins-article-subhead {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #3D2E1F;
+  line-height: 1.6;
+  margin: 32px 0 14px;
+}
+
+.ins-article-subhead:first-child {
+  margin-top: 0;
+}
+
 .ins-article-tags {
   display: flex;
   flex-wrap: wrap;
