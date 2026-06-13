@@ -2517,3 +2517,33 @@ section {
     padding: 20px 20px;
   }
 }
+
+/* ── 삶 이야기 카테고리 필터 ── */
+.life-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.life-filter-btn {
+  background: #F5EEE1;
+  color: #8C5E2A;
+  border: 0.5px solid #E8DDC7;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.life-filter-btn:hover {
+  background: #EFE4D0;
+}
+
+.life-filter-btn.active {
+  background: #8C5E2A;
+  color: #FFFFFF;
+  border-color: #8C5E2A;
+}

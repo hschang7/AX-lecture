@@ -1,20 +1,24 @@
-/* life.js — 삶 이야기 페이지 렌더링 (인생 소회·지혜 글 목록) */
+/* life.js — 삶 이야기 페이지 렌더링 + 카테고리 필터 */
 
-/* ── 삶 이야기 글 렌더링 ── */
+let allLifeArticles = [];
+let activeLifeCategory = '전체';
+
+/* ── 글 목록 렌더링 ── */
 function renderLifeArticles(articles) {
   const container = document.getElementById('life-articles');
+  container.innerHTML = '';
 
   if (!articles || articles.length === 0) {
     container.innerHTML = `
       <div class="res-insights-empty">
-        살아가며 떠오르는 생각들을 이 자리에 하나씩 적어 두려 합니다.
+        이 카테고리에는 아직 글이 없습니다.
       </div>`;
     return;
   }
 
-  articles.sort((a, b) => b.date.localeCompare(a.date));
+  const sorted = [...articles].sort((a, b) => b.date.localeCompare(a.date));
 
-  articles.forEach(article => {
+  sorted.forEach(article => {
     const card = document.createElement('article');
     card.className = 'ins-article-card';
 
@@ -106,16 +110,50 @@ function renderLifeArticles(articles) {
   });
 }
 
+/* ── 카테고리 필터 바 렌더링 (카테고리는 데이터에서 자동 추출) ── */
+function renderLifeFilter() {
+  const bar = document.getElementById('life-filter');
+  if (!bar) return;
+  bar.innerHTML = '';
+
+  const cats = ['전체', ...Array.from(new Set(allLifeArticles.map(a => a.category).filter(Boolean)))];
+
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'life-filter-btn' + (cat === activeLifeCategory ? ' active' : '');
+    btn.textContent = cat;
+    btn.setAttribute('aria-pressed', String(cat === activeLifeCategory));
+    btn.addEventListener('click', () => {
+      activeLifeCategory = cat;
+      renderLifeFilter();
+      applyLifeFilter();
+    });
+    bar.appendChild(btn);
+  });
+}
+
+/* ── 필터 적용 ── */
+function applyLifeFilter() {
+  const list = activeLifeCategory === '전체'
+    ? allLifeArticles
+    : allLifeArticles.filter(a => a.category === activeLifeCategory);
+  renderLifeArticles(list);
+}
+
 /* ── 에러 메시지 ── */
 function showLifeError(msg = '정보를 불러오지 못했습니다.') {
   const el = document.getElementById('life-articles');
   if (el) el.innerHTML = `<p class="res-empty">${msg}</p>`;
 }
 
-/* ── 메인: 삶 이야기 글 불러오기 ── */
+/* ── 메인 ── */
 document.addEventListener('DOMContentLoaded', () => {
   fetch('data/life.json')
     .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-    .then(d => renderLifeArticles(d.articles))
+    .then(d => {
+      allLifeArticles = d.articles || [];
+      renderLifeFilter();
+      applyLifeFilter();
+    })
     .catch(() => showLifeError());
 });
