@@ -1,31 +1,33 @@
-/* insights.js — 인사이트 페이지 렌더링 (인사이트 글 목록) */
+/* insights.js — 인사이트 페이지 렌더링 + 카테고리 필터 */
 
-/* ── 인사이트(본인 글) 렌더링 ── */
+let allInsightsArticles = [];
+let activeInsightsCategory = '전체';
+
+/* ── 인사이트 글 목록 렌더링 ── */
 function renderInsights(articles) {
   const container = document.getElementById('insights');
+  container.innerHTML = '';
 
   if (!articles || articles.length === 0) {
     container.innerHTML = `
       <div class="res-insights-empty">
-        앞으로 이 공간에 짧은 글들을 차곡차곡 기록해 갈 예정입니다.
+        이 카테고리에는 아직 글이 없습니다.
       </div>`;
     return;
   }
 
-  articles.sort((a, b) => b.date.localeCompare(a.date));
+  const sorted = [...articles].sort((a, b) => b.date.localeCompare(a.date));
 
-  articles.forEach(article => {
+  sorted.forEach(article => {
     const card = document.createElement('article');
     card.className = 'ins-article-card';
 
-    /* 헤더 행: 클릭 영역 (메타 + 제목 + 토글 버튼) */
     const header = document.createElement('div');
     header.className = 'ins-article-header';
 
     const headerLeft = document.createElement('div');
     headerLeft.className = 'ins-article-header-left';
 
-    /* 메타 행: 날짜 + 카테고리 */
     const meta = document.createElement('div');
     meta.className = 'ins-article-meta';
 
@@ -43,7 +45,6 @@ function renderInsights(articles) {
     }
     headerLeft.appendChild(meta);
 
-    /* 제목 */
     const title = document.createElement('h3');
     title.className = 'ins-article-title';
     title.textContent = article.title;
@@ -51,7 +52,6 @@ function renderInsights(articles) {
 
     header.appendChild(headerLeft);
 
-    /* 토글 버튼 */
     const toggleBtn = document.createElement('button');
     toggleBtn.className = 'ins-article-toggle';
     toggleBtn.textContent = '본문 보기';
@@ -60,7 +60,6 @@ function renderInsights(articles) {
 
     card.appendChild(header);
 
-    /* 본문 + 태그 (기본 숨김) */
     const body = document.createElement('div');
     body.className = 'ins-article-body';
     body.hidden = true;
@@ -69,9 +68,16 @@ function renderInsights(articles) {
       const paras = document.createElement('div');
       paras.className = 'ins-article-paragraphs';
       article.paragraphs.forEach(text => {
-        const p = document.createElement('p');
-        p.textContent = text;
-        paras.appendChild(p);
+        if (typeof text === 'string' && text.startsWith('## ')) {
+          const h = document.createElement('h4');
+          h.className = 'ins-article-subhead';
+          h.textContent = text.slice(3).trim();
+          paras.appendChild(h);
+        } else {
+          const p = document.createElement('p');
+          p.textContent = text;
+          paras.appendChild(p);
+        }
       });
       body.appendChild(paras);
     }
@@ -90,7 +96,6 @@ function renderInsights(articles) {
 
     card.appendChild(body);
 
-    /* 토글 동작 */
     function toggle() {
       const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
       body.hidden = expanded;
@@ -105,16 +110,50 @@ function renderInsights(articles) {
   });
 }
 
+/* ── 카테고리 필터 바 렌더링 (카테고리는 데이터에서 자동 추출) ── */
+function renderInsightsFilter() {
+  const bar = document.getElementById('insights-filter');
+  if (!bar) return;
+  bar.innerHTML = '';
+
+  const cats = ['전체', ...Array.from(new Set(allInsightsArticles.map(a => a.category).filter(Boolean)))];
+
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'ins-filter-btn' + (cat === activeInsightsCategory ? ' active' : '');
+    btn.textContent = cat;
+    btn.setAttribute('aria-pressed', String(cat === activeInsightsCategory));
+    btn.addEventListener('click', () => {
+      activeInsightsCategory = cat;
+      renderInsightsFilter();
+      applyInsightsFilter();
+    });
+    bar.appendChild(btn);
+  });
+}
+
+/* ── 필터 적용 ── */
+function applyInsightsFilter() {
+  const list = activeInsightsCategory === '전체'
+    ? allInsightsArticles
+    : allInsightsArticles.filter(a => a.category === activeInsightsCategory);
+  renderInsights(list);
+}
+
 /* ── 에러 메시지 ── */
-function showError(id, msg = '정보를 불러오지 못했습니다.') {
-  const el = document.getElementById(id);
+function showInsightsError(msg = '정보를 불러오지 못했습니다.') {
+  const el = document.getElementById('insights');
   if (el) el.innerHTML = `<p class="res-empty">${msg}</p>`;
 }
 
-/* ── 메인: 인사이트 글 불러오기 ── */
+/* ── 메인 ── */
 document.addEventListener('DOMContentLoaded', () => {
   fetch('data/insights.json')
     .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-    .then(d => renderInsights(d.articles))
-    .catch(() => showError('insights'));
+    .then(d => {
+      allInsightsArticles = d.articles || [];
+      renderInsightsFilter();
+      applyInsightsFilter();
+    })
+    .catch(() => showInsightsError());
 });
