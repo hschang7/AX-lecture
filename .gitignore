@@ -1,0 +1,9 @@
+# 문서 파일은 코드 저장소에 두지 않음 (코웍 작업폴더/Drive에서 관리)
+*.docx
+*.xlsx
+*.pptx
+*.pdf
+
+# OS/에디터 부산물
+.DS_Store
+Thumbs.db
