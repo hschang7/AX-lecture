@@ -2494,6 +2494,25 @@ section {
   margin-top: 0;
 }
 
+/* 본문 이미지 (![설명](경로) 단락) */
+.ins-article-figure {
+  margin: 24px auto;
+  text-align: center;
+}
+
+.ins-article-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.ins-article-figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #8A7A66;
+  line-height: 1.6;
+}
+
 .ins-article-tags {
   display: flex;
   flex-wrap: wrap;
