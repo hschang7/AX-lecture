@@ -11,10 +11,10 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>강연 · 장홍성의 AX 공간</title>
-  <meta name="description" content="기업, 공공기관, 학교 등 다양한 자리에서 AX에 관한 생각을 나눈 강연 기록. 2021년부터 현재까지의 발자취.">
-  <meta property="og:title" content="강연 · 장홍성의 AX 공간">
-  <meta property="og:description" content="함께했던, 그리고 앞으로 이어질 이야기들">
+  <title>경영자문·강연 · 장홍성의 AX 공간</title>
+  <meta name="description" content="기업·공공기관·학교에서의 강연과, 사회적기업·스타트업 경영자문 기록. SK 행복나래 SE컨설턴트 자문위원 활동을 포함합니다.">
+  <meta property="og:title" content="경영자문·강연 · 장홍성의 AX 공간">
+  <meta property="og:description" content="기업·공공기관·학교에서의 강연과, 사회적기업·스타트업 경영자문 이야기">
   <meta property="og:url" content="https://chang-hongsung.com/lectures.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://chang-hongsung.com/images/og-image.png">
@@ -40,7 +40,7 @@
       <ul class="nav-menu" id="nav-menu">
         <li><a href="index.html">홈</a></li>
         <li><a href="about.html">소개</a></li>
-        <li><a href="lectures.html" class="active">강연</a></li>
+        <li><a href="lectures.html" class="active">자문·강연</a></li>
         <li><a href="insights.html">인사이트</a></li>
         <li><a href="life.html">삶 이야기</a></li>
       </ul>
@@ -55,15 +55,24 @@
         <span class="lec-page-label">lectures</span>
         <h1 class="lec-page-title">함께했던, 그리고 앞으로 이어질 이야기들</h1>
         <p class="lec-page-sub">
-          기업, 공공기관, 학교 등 다양한 자리에서 AX에 관한 생각을 나누고 있습니다.
+          기업·공공기관·학교에서의 강연과, 사회적기업·스타트업 경영자문 기록입니다.
         </p>
       </div>
     </section>
 
-    <!-- ── 통합 타임라인 ── -->
+    <!-- ── 본문 ── -->
     <section class="lec-body">
       <div class="container">
+
+        <!-- 경영자문 -->
+        <h2 class="lec-section-heading">경영자문</h2>
+        <p class="adv-intro">SK 행복나래 SE컨설턴트 자문위원으로 사회적기업·스타트업의 경영을 자문하고 있습니다.</p>
+        <div id="advisory-list"></div>
+
+        <!-- 강연 -->
+        <h2 class="lec-section-heading" style="margin-top:56px;">강연</h2>
         <div id="lecture-timeline"></div>
+
       </div>
     </section>
 
@@ -73,7 +82,7 @@
   <footer class="site-footer">
     <div class="container">
       <nav class="footer-nav">
-        <a href="index.html">홈</a><span class="footer-sep">·</span><a href="about.html">소개</a><span class="footer-sep">·</span><a href="lectures.html">강연</a><span class="footer-sep">·</span><a href="insights.html">인사이트</a><span class="footer-sep">·</span><a href="life.html">삶 이야기</a>
+        <a href="index.html">홈</a><span class="footer-sep">·</span><a href="about.html">소개</a><span class="footer-sep">·</span><a href="lectures.html">자문·강연</a><span class="footer-sep">·</span><a href="insights.html">인사이트</a><span class="footer-sep">·</span><a href="life.html">삶 이야기</a>
       </nav>
       <p class="footer-contact">
         <a href="mailto:hschang69@gmail.com">hschang69@gmail.com</a>
@@ -83,6 +92,7 @@
     </div>
   </footer>
 
+  <script src="js/advisory.js"></script>
   <script src="js/lectures.js"></script>
   <script>
     const hamburger = document.getElementById('hamburger');

@@ -1,0 +1,19 @@
+{
+  "intro": "SK 행복나래 SE컨설턴트 자문위원으로 사회적기업·스타트업의 경영을 자문하고 있습니다.",
+  "advisory": [
+    { "id": "2026-dranvi",      "company": "드란비(Dranvi)",   "year": 2026, "type": "장기자문", "field": "런타임 제어 기반 B2B 보안 소프트웨어", "role": "SE컨설턴트 자문위원" },
+    { "id": "2026-gtx",         "company": "지티엑스",          "year": 2026, "type": "장기자문", "field": "위급상황 대응 P2P 안전 플랫폼 ‘봐줌’", "role": "SE컨설턴트 자문위원" },
+    { "id": "2026-gaon",        "company": "가온",              "year": 2026, "type": "장기자문", "field": "방문돌봄 매칭 플랫폼 ‘우렁각시’", "role": "SE컨설턴트 자문위원" },
+    { "id": "2026-jerrybag",    "company": "제리백",            "year": 2026, "type": "단기자문", "field": "보행안전 제품·업사이클링 소셜벤처", "role": "SE컨설턴트 자문위원" },
+    { "id": "2026-dodo",        "company": "도도한콜라보",      "year": 2026, "type": "단기자문", "field": "청년정책 정보 플랫폼 ‘열고닫기’", "role": "SE컨설턴트 자문위원" },
+    { "id": "2026-okivery",     "company": "오키버리",          "year": 2026, "type": "단기자문", "field": "공유주방 기반 F&B 소셜벤처", "role": "SE컨설턴트 자문위원" },
+    { "id": "2026-malgwa",      "company": "말과학놀이터",      "year": 2026, "type": "단기자문", "field": "음성인식 기반 언어재활(디지털 헬스케어)", "role": "SE컨설턴트 자문위원" },
+    { "id": "2025-mindhub",     "company": "마인드허브",        "year": 2025, "type": "장기자문", "field": "AI 인지·언어 재활 솔루션", "role": "SE컨설턴트 자문위원" },
+    { "id": "2025-malgwa",      "company": "말과학놀이터",      "year": 2025, "type": "장기자문", "field": "음성인식 기반 언어재활(디지털 헬스케어)", "role": "SE컨설턴트 자문위원" },
+    { "id": "2025-crepass",     "company": "크레파스솔루션",    "year": 2025, "type": "단기자문", "field": "대안신용평가 핀테크", "role": "SE컨설턴트 자문위원" },
+    { "id": "2025-companybb",   "company": "컴퍼니봄봄",        "year": 2025, "type": "단기자문", "field": "산업안전(크레인 충돌 방지) 솔루션", "role": "SE컨설턴트 자문위원" },
+    { "id": "2025-aloha",       "company": "알로하아이디어스",  "year": 2025, "type": "단기자문", "field": "독서소외계층 아동 음성기부 소셜벤처", "role": "SE컨설턴트 자문위원" },
+    { "id": "2025-weepls",      "company": "위플즈",            "year": 2025, "type": "단기자문", "field": "친환경 웹서비스 측정·진단 솔루션", "role": "SE컨설턴트 자문위원" },
+    { "id": "2025-kostart",     "company": "코스타트",          "year": 2025, "type": "단기자문", "field": "초기 스타트업 경영자문", "role": "SE컨설턴트 자문위원" }
+  ]
+}
