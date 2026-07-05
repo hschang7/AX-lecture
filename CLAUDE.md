@@ -36,7 +36,7 @@
 | 구조 | **순수 정적 HTML + CSS + JS** (Astro·번들러·빌드 단계 없음 — 파일이 곧 사이트) |
 | 호스팅 | GitHub Pages (자동 배포) |
 | 도메인/DNS | chang-hongsung.com (Cloudflare Registrar) + CNAME |
-| 데이터 | `data/*.json` (insights · lectures · life) |
+| 데이터 | `data/*.json` (advisory · insights · lectures · life) |
 
 ---
 
@@ -46,10 +46,11 @@
 ax-lecture/
 ├── index.html · about.html · lectures.html · insights.html · life.html
 ├── css/style.css
-├── js/        # insights · lectures · life
-├── data/      # insights · lectures · life (.json)
+├── js/        # advisory · insights · lectures · life
+├── data/      # advisory · insights · lectures · life (.json)
 ├── images/    # 프로필·OG 이미지
 ├── share/     # 개인 글 마크다운
+├── robots.txt · sitemap.xml   # SEO
 ├── CNAME · favicon.svg · README.md
 └── CLAUDE.md  # 이 파일
 ```
@@ -78,3 +79,4 @@ ax-lecture/
 
 - **v1.0 (2026-06-07)** : 최초 작성. 코웍 + 클로드 코드 협업 체계 전환에 맞춰 코드 저장소 컨텍스트로 신설. 운영·기억 단일원천을 코웍 `개인 웹 사이트 구축 및 운영\MEMORY.md`로 지정(메모리 사일로 방지), 사이트 콘텐츠 원천은 Drive `AX-site-info-v3.md`.
 - **v1.1 (2026-06-08)** : 사이트 구조 개편. 커뮤니티(Supabase 백엔드 포함) 섹션 제거, 인사이트의 추천 도서·자료 및 인터뷰 섹션 제거, 신규 **삶 이야기**(`life.html` · `data/life.json` · `js/life.js`) 섹션 추가(인사이트형 글 목록, 커뮤니티 메뉴 자리 교체). 삭제 파일: community.html · resources.html · js/{community,supabase-config,resources}.js · data/{interviews,recommendations}.json. css/style.css의 `.comm-*` 스타일은 미사용으로 잔존(추후 정리 가능).
+- **v1.2 (2026-07-05, 문서-코드 정합 + 미사용 CSS 정리)**: §3·§4에 실제 4번째 데이터 축 `advisory`(자문 활동, lectures.html 로드) 반영, §4 디렉토리 구조에 `robots.txt`·`sitemap.xml`(SEO) 추가. `css/style.css`의 미사용 `.comm-*` 스타일 제거(html·js 참조 0건 실측 확인) — v1.1 커뮤니티 섹션 제거의 잔재로 "추후 정리 가능"으로 예고했던 분량.
