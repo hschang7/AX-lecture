@@ -11,6 +11,33 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- traffic collector (Supabase) -->
+  <script>
+  (function(){
+    try{
+      var SITE="chang-hongsung";
+      var ENDPOINT="https://ookwlomnxkecaqtkliee.supabase.co/rest/v1/pageviews";
+      var KEY="sb_publishable_R30Df6BXmUZpp5HYMByLJA_gDTch7oA";
+      var vid=localStorage.getItem("_vid");
+      if(!vid){ vid=(self.crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now()+"-"+Math.random().toString(36).slice(2)); localStorage.setItem("_vid",vid); }
+      var ref=document.referrer||"";
+      var host=""; try{ host=ref?new URL(ref).hostname:""; }catch(e){}
+      var src="direct";
+      if(host){
+        if(host.indexOf(location.hostname)>-1) src="internal";
+        else if(/google\./i.test(host)) src="google";
+        else if(/naver\./i.test(host)) src="naver";
+        else if(/(facebook|instagram|twitter|x\.com|t\.co|linkedin|threads|youtube)/i.test(host)) src="social";
+        else src=host;
+      }
+      var ua=navigator.userAgent||"";
+      var device=/Mobi|Android|iPhone/i.test(ua)?"mobile":(/iPad|Tablet/i.test(ua)?"tablet":"desktop");
+      fetch(ENDPOINT,{method:"POST",keepalive:true,headers:{
+        "apikey":KEY,"Authorization":"Bearer "+KEY,"Content-Type":"application/json","Prefer":"return=minimal"
+      },body:JSON.stringify({site:SITE,path:location.pathname,referrer:ref,ref_source:src,device:device,visitor_id:vid})});
+    }catch(e){}
+  })();
+  </script>
   <title>장홍성 소개 · 장홍성의 AX 공간</title>
   <meta name="description" content="삼성전자, SK홀딩스를 거쳐 SK텔레콤 부사장, 한국인공지능산업협회장을 역임한 AI/AX 전문가 장홍성의 경력과 활동 소개.">
   <meta property="og:title" content="장홍성 소개 · 장홍성의 AX 공간">
