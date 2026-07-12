@@ -485,7 +485,7 @@ section {
 }
 
 .board-label {
-  width: 40px;
+  width: 64px;      /* '기술자문' 4글자 줄바꿈 방지 */
   flex-shrink: 0;
   font-size: 15px;
   color: var(--text-point);
