@@ -4,6 +4,7 @@
     { "id": "2026-dranvi",      "company": "드란비(Dranvi)",   "year": 2026, "type": "장기자문", "field": "런타임 제어 기반 B2B 보안 소프트웨어", "role": "SE컨설턴트 자문위원" },
     { "id": "2026-gtx",         "company": "지티엑스",          "year": 2026, "type": "장기자문", "field": "위급상황 대응 P2P 안전 플랫폼 ‘봐줌’", "role": "SE컨설턴트 자문위원" },
     { "id": "2026-gaon",        "company": "가온",              "year": 2026, "type": "장기자문", "field": "방문돌봄 매칭 플랫폼 ‘우렁각시’", "role": "SE컨설턴트 자문위원" },
+    { "id": "2026-playbuniz",   "company": "플레이버니즈(PLBZ Inc.)", "year": 2026, "type": "장기자문", "field": "소상공인 현장직과 외국인 유학생을 잇는 AI 채용 매칭 플랫폼 ‘비바 코리아(ViVA! Korea)’", "role": "SE컨설턴트 자문위원" },
     { "id": "2026-jerrybag",    "company": "제리백",            "year": 2026, "type": "단기자문", "field": "보행안전 제품·업사이클링 소셜벤처", "role": "SE컨설턴트 자문위원" },
     { "id": "2026-dodo",        "company": "도도한콜라보",      "year": 2026, "type": "단기자문", "field": "청년정책 정보 플랫폼 ‘열고닫기’", "role": "SE컨설턴트 자문위원" },
     { "id": "2026-okivery",     "company": "오키버리",          "year": 2026, "type": "단기자문", "field": "공유주방 기반 F&B 소셜벤처", "role": "SE컨설턴트 자문위원" },
