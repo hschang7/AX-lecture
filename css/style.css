@@ -1642,6 +1642,16 @@ section {
   min-width: 0;
 }
 
+/* 카드 썸네일 (선택 — data의 thumb 필드가 있을 때만 렌더) */
+.ins-article-thumb {
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 0.5px solid #E8DDC7;
+}
+
 .ins-article-meta {
   display: flex;
   align-items: center;
@@ -1767,6 +1777,25 @@ section {
 @media (max-width: 768px) {
   .ins-article-card {
     padding: 20px 20px;
+  }
+
+  .ins-article-thumb {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* 썸네일이 가져간 폭을 회수 — 좁은 화면에서 메타 칩이 세로로 붕괴하는 것을 막는다.
+     버튼을 숨겨도 토글 리스너가 헤더에 걸려 있어 카드 탭으로 그대로 펼쳐진다. */
+  .ins-article-header {
+    gap: 12px;
+  }
+
+  .ins-article-toggle {
+    display: none;
+  }
+
+  .ins-article-category {
+    white-space: nowrap;
   }
 }
 

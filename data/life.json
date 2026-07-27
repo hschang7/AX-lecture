@@ -2,6 +2,7 @@
   "articles": [
     {
       "id": "2026-07-26-leverage-negative-compounding",
+      "thumb": "images/thumbs/2026-07-26-leverage-negative-compounding.webp",
       "title": "제자리로 돌아와도 원금은 돌아오지 않는다 — 레버리지와 음의 복리",
       "date": "2026.07.26",
       "category": "풍요로운 삶",
@@ -30,6 +31,7 @@
     },
     {
       "id": "2026-07-18-dartnell-origins",
+      "thumb": "images/thumbs/2026-07-18-dartnell-origins.webp",
       "title": "루이스 다트넬 《오리진: 지구는 어떻게 우리를 만들었는가》",
       "date": "2026.07.18",
       "category": "지혜로운 삶",
@@ -53,6 +55,7 @@
     },
     {
       "id": "2026-07-17-courage-over-wisdom-kpi",
+      "thumb": "images/thumbs/2026-07-17-courage-over-wisdom-kpi.webp",
       "title": "지혜보다 용기라고 말하던 시절",
       "date": "2026.07.17",
       "category": "지혜로운 삶",
@@ -76,6 +79,7 @@
     },
     {
       "id": "2026-07-08-schopenhauer-solitude",
+      "thumb": "images/thumbs/2026-07-08-schopenhauer-solitude.webp",
       "title": "왜 지금, 우리는 쇼펜하우어를 읽는가",
       "date": "2026.07.08",
       "category": "지혜로운 삶",
@@ -93,6 +97,7 @@
     },
     {
       "id": "2026-07-04-choice-the-having",
+      "thumb": "images/thumbs/2026-07-04-choice-the-having.webp",
       "title": "인생은 B와 D 사이의 C — 현명한 선택의 기준",
       "date": "2026.07.04",
       "category": "지혜로운 삶",
@@ -110,6 +115,7 @@
     },
     {
       "id": "2026-06-30-knowing-when-to-stop",
+      "thumb": "images/thumbs/2026-06-30-knowing-when-to-stop.webp",
       "title": "멈출 수 있다는 것",
       "date": "2026.06.30",
       "category": "지혜로운 삶",
@@ -126,6 +132,7 @@
     },
     {
       "id": "2026-06-27-birth-lottery-gratitude",
+      "thumb": "images/thumbs/2026-06-27-birth-lottery-gratitude.webp",
       "title": "잘 태어났다는 것 — 성공 앞에서 겸손해야 하는 이유",
       "date": "2026.06.27",
       "category": "지혜로운 삶",
@@ -157,6 +164,7 @@
     },
     {
       "id": "2026-06-24-dragon-tail-chicken-head",
+      "thumb": "images/thumbs/2026-06-24-dragon-tail-chicken-head.webp",
       "title": "용의 꼬리가 될까, 닭의 머리가 될까",
       "date": "2026.06.24",
       "category": "지혜로운 삶",
@@ -178,6 +186,7 @@
     },
     {
       "id": "2026-06-23-eat-less-sosik",
+      "thumb": "images/thumbs/2026-06-23-eat-less-sosik.webp",
       "title": "건강을 위한 단 하나의 습관을 꼽으라면, 적게 먹는 것(小食)",
       "date": "2026.06.23",
       "category": "건강한 삶",
@@ -199,6 +208,7 @@
     },
     {
       "id": "2026-06-20-carl-sagan-cosmos",
+      "thumb": "images/thumbs/2026-06-20-carl-sagan-cosmos.webp",
       "title": "내 인생책, 칼 세이건의 《코스모스》",
       "date": "2026.06.20",
       "category": "지혜로운 삶",
@@ -222,6 +232,7 @@
     },
     {
       "id": "2026-06-13-long-term-index-investing",
+      "thumb": "images/thumbs/2026-06-13-long-term-index-investing.webp",
       "title": "왜 장기 지수 투자가 단기 종목 투자를 이기는가",
       "date": "2026.06.13",
       "category": "풍요로운 삶",
@@ -257,6 +268,7 @@
     },
     {
       "id": "2026-06-12-middle-age-men-nutrition",
+      "thumb": "images/thumbs/2026-06-12-middle-age-men-nutrition.webp",
       "title": "남자 마흔이 넘으면, 무엇을 챙겨 먹어야 할까",
       "date": "2026.06.12",
       "category": "건강한 삶",
@@ -286,6 +298,7 @@
     },
     {
       "id": "2026-06-08-luck-seven-skill-three",
+      "thumb": "images/thumbs/2026-06-08-luck-seven-skill-three.webp",
       "title": "운칠기삼(運七技三)",
       "date": "2026.06.08",
       "category": "지혜로운 삶",

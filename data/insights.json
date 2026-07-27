@@ -2,6 +2,7 @@
   "articles": [
     {
       "id": "2026-07-26-fifty-year-number-imitation-creation",
+      "thumb": "images/thumbs/2026-07-26-fifty-year-number-imitation-creation.webp",
       "title": "50년 만의 숫자를 어떻게 읽을 것인가 — 모방의 시대를 지나, AI가 연 창(窓)",
       "date": "2026.07.26",
       "category": "AX 에세이",
@@ -40,6 +41,7 @@
     },
     {
       "id": "2026-07-17-calculator-and-inspector",
+      "thumb": "images/thumbs/2026-07-17-calculator-and-inspector.webp",
       "title": "계산기와 검수 사원 — 한 회사 안에서 갈린 두 개의 AI",
       "date": "2026.07.17",
       "category": "AI 활용",
@@ -76,6 +78,7 @@
     },
     {
       "id": "2026-07-12-fearless-organization-ax",
+      "thumb": "images/thumbs/2026-07-12-fearless-organization-ax.webp",
       "title": "AX가 멈추는 자리에는, 늘 침묵이 있었습니다",
       "date": "2026.07.12",
       "category": "AX 에세이",
@@ -117,6 +120,7 @@
     },
     {
       "id": "2026-07-08-ai-social-contract",
+      "thumb": "images/thumbs/2026-07-08-ai-social-contract.webp",
       "title": "AI가 바꾸는 것은 일자리가 아니라 '사회 계약'입니다",
       "date": "2026.07.08",
       "category": "AX 에세이",
@@ -149,6 +153,7 @@
     },
     {
       "id": "2026-07-05-ai-coding-adoption-method",
+      "thumb": "images/thumbs/2026-07-05-ai-coding-adoption-method.webp",
       "title": "AI 코딩은 정말 생산성을 높일까 — 제가 겪은 폭발적 효과와, 데이터가 말하는 도입의 조건",
       "date": "2026.07.05",
       "category": "바이브 코딩",
@@ -190,6 +195,7 @@
     },
     {
       "id": "2026-07-05-agent-roi-reality",
+      "thumb": "images/thumbs/2026-07-05-agent-roi-reality.webp",
       "title": "에이전트를 깔았는데 왜 성과가 없을까 — 파일럿 95%가 멈추는 진짜 이유",
       "date": "2026.07.05",
       "category": "AX 에세이",
@@ -227,6 +233,7 @@
     },
     {
       "id": "2026-06-28-ontology-ai-synergy",
+      "thumb": "images/thumbs/2026-06-28-ontology-ai-synergy.webp",
       "title": "낡은 줄 알았던 '온톨로지'가 AI 시대에 다시 깨어났습니다 — 똑똑한 AI에게 필요한 지식의 뼈대",
       "date": "2026.06.28",
       "category": "AI tech",
@@ -261,6 +268,7 @@
     },
     {
       "id": "2026-06-27-ai-native-company-transition",
+      "thumb": "images/thumbs/2026-06-27-ai-native-company-transition.webp",
       "title": "AI를 '쓰는' 회사를 넘어, 'AI Native' 회사로",
       "date": "2026.06.27",
       "category": "AX 에세이",
@@ -293,6 +301,7 @@
     },
     {
       "id": "2026-06-24-b2b-ax-tier2-tier3-strategy",
+      "thumb": "images/thumbs/2026-06-24-b2b-ax-tier2-tier3-strategy.webp",
       "title": "대기업이 스스로 만들기 시작했다 — AX 사업의 무게중심을 옮길 때",
       "date": "2026.06.24",
       "category": "AX 에세이",
@@ -316,6 +325,7 @@
     },
     {
       "id": "2026-06-20-cross-the-ridge-first",
+      "thumb": "images/thumbs/2026-06-20-cross-the-ridge-first.webp",
       "title": "정상에 오르려면, 먼저 능선을 넘어야 합니다 — AX의 중간 과정에 대하여",
       "date": "2026.06.20",
       "category": "AX 에세이",
@@ -338,6 +348,7 @@
   ,
     {
       "id": "2026-06-19-four-doors-chat-cowork",
+      "thumb": "images/thumbs/2026-06-19-four-doors-chat-cowork.webp",
       "title": "비슷해 보이는 네 개의 문 — 클로드 채팅과 코웍, 무엇을 언제 쓸까",
       "date": "2026.06.19",
       "category": "AI 활용",
@@ -372,6 +383,7 @@
     },
     {
       "id": "2026-06-17-ai-2026-h1-five-scenes",
+      "thumb": "images/thumbs/2026-06-17-ai-2026-h1-five-scenes.webp",
       "title": "2026년 상반기, 인공지능 기술이 남긴 다섯 장면",
       "date": "2026.06.17",
       "category": "AI tech",
@@ -400,6 +412,7 @@
     },
     {
       "id": "2026-06-17-empathy-perspective-taking",
+      "thumb": "images/thumbs/2026-06-17-empathy-perspective-taking.webp",
       "title": "역지사지는 왜 그토록 어려운가 — 사람도, 인공지능도",
       "date": "2026.06.17",
       "category": "AX 에세이",
@@ -420,6 +433,7 @@
     },
     {
       "id": "2026-06-13-fable5-sovereign-ai",
+      "thumb": "images/thumbs/2026-06-13-fable5-sovereign-ai.webp",
       "title": "하루아침에 꺼진 최강 AI, 그리고 '소버린 AI'라는 숙제",
       "date": "2026.06.13",
       "category": "AI tech",
@@ -449,6 +463,7 @@
   ,
     {
       "id": "2026-06-13-cowork-code-vibe-coding",
+      "thumb": "images/thumbs/2026-06-13-cowork-code-vibe-coding.webp",
       "title": "이어달리기, 바통이 가벼워졌습니다",
       "date": "2026.06.13",
       "category": "바이브 코딩",
@@ -467,6 +482,7 @@
   ,
     {
       "id": "2026-05-11-after-the-poc",
+      "thumb": "images/thumbs/2026-05-11-after-the-poc.webp",
       "title": "PoC가 끝난 자리에서",
       "date": "2026.05.11",
       "category": "AX 에세이",
@@ -483,6 +499,7 @@
   ,
     {
       "id": "2026-04-18-opening-walking-together",
+      "thumb": "images/thumbs/2026-04-18-opening-walking-together.webp",
       "title": "함께 걷는 자리를 엽니다",
       "date": "2026.04.18",
       "category": "AX 에세이",
@@ -498,6 +515,7 @@
   ,
     {
       "id": "2026-04-21-ax-myself-first",
+      "thumb": "images/thumbs/2026-04-21-ax-myself-first.webp",
       "title": "제가 먼저 AX가 되었습니다",
       "date": "2026.04.21",
       "category": "AX 에세이",
@@ -514,6 +532,7 @@
   ,
     {
       "id": "2026-05-04-three-person-relay",
+      "thumb": "images/thumbs/2026-05-04-three-person-relay.webp",
       "title": "3인 4각 이어달리기",
       "date": "2026.05.04",
       "category": "바이브 코딩",
@@ -529,6 +548,7 @@
   ,
     {
       "id": "2026-05-09-learn-to-run-ai",
+      "thumb": "images/thumbs/2026-05-09-learn-to-run-ai.webp",
       "title": "Learn to run AI",
       "date": "2026.05.09",
       "category": "바이브 코딩",
@@ -545,6 +565,7 @@
   ,
     {
       "id": "2026-04-19-no-more-moonsoghaeyo",
+      "thumb": "images/thumbs/2026-04-19-no-more-moonsoghaeyo.webp",
       "title": "\"문송해요\"가 필요 없어지는 시간",
       "date": "2026.04.19",
       "category": "AX 에세이",

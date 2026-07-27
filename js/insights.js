@@ -50,6 +50,18 @@ function renderInsights(articles) {
     title.textContent = article.title;
     headerLeft.appendChild(title);
 
+    if (article.thumb) {
+      const thumb = document.createElement('img');
+      thumb.className = 'ins-article-thumb';
+      thumb.src = article.thumb;
+      thumb.alt = '';                 // 장식 이미지 — 스크린리더 건너뜀
+      thumb.loading = 'lazy';
+      thumb.decoding = 'async';
+      thumb.width = 88;               // 레이아웃 시프트 방지 (CSS가 우선)
+      thumb.height = 88;
+      header.appendChild(thumb);
+    }
+
     header.appendChild(headerLeft);
 
     const toggleBtn = document.createElement('button');
