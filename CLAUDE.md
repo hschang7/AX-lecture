@@ -50,6 +50,7 @@ ax-lecture/
 ├── data/      # advisory · insights · lectures · life (.json)
 ├── images/    # 프로필·OG 이미지
 ├── share/     # 개인 글 마크다운
+├── scripts/   # make_thumb.py(썸네일 생성) · verify_post.py(포스팅 실측 검증)
 ├── robots.txt · sitemap.xml   # SEO
 ├── CNAME · favicon.svg · README.md
 └── CLAUDE.md  # 이 파일
@@ -64,6 +65,7 @@ ax-lecture/
 - **빌드 없음**: HTML/CSS/JS·JSON을 직접 편집하면 곧 사이트에 반영된다. 변경 후 **브라우저로 직접 확인**(데스크톱+모바일), 실제 배포는 git push 시 GitHub Pages 자동 반영.
 - **콘텐츠 업로드 흐름**: 코웍 초안 → docx/md → 클로드 코드로 `data/*.json` 또는 HTML 추가 → git push → 자동 배포.
 - **변경 후 검증 절차 동봉**: 모든 변경 보고에 홍성님이 직접 확인 가능한 절차를 동봉한다(예: "/insights.html 접속 → 새 글 카드 노출 확인").
+- **새 글 포스팅 후 실측**: `python scripts/verify_post.py <글 id>` 로 카드·썸네일·소제목·본문 그림(figure/figcaption)·모바일 375px·콘솔 오류를 자동 확인한 뒤 커밋한다. 눈으로 보는 확인을 대체하지 않고 보조한다. playwright 필요 — 설치 방법은 스크립트 docstring 참조.
 
 ---
 
@@ -80,3 +82,4 @@ ax-lecture/
 - **v1.0 (2026-06-07)** : 최초 작성. 코웍 + 클로드 코드 협업 체계 전환에 맞춰 코드 저장소 컨텍스트로 신설. 운영·기억 단일원천을 코웍 `개인 웹 사이트 구축 및 운영\MEMORY.md`로 지정(메모리 사일로 방지), 사이트 콘텐츠 원천은 Drive `AX-site-info-v3.md`.
 - **v1.1 (2026-06-08)** : 사이트 구조 개편. 커뮤니티(Supabase 백엔드 포함) 섹션 제거, 인사이트의 추천 도서·자료 및 인터뷰 섹션 제거, 신규 **삶 이야기**(`life.html` · `data/life.json` · `js/life.js`) 섹션 추가(인사이트형 글 목록, 커뮤니티 메뉴 자리 교체). 삭제 파일: community.html · resources.html · js/{community,supabase-config,resources}.js · data/{interviews,recommendations}.json. css/style.css의 `.comm-*` 스타일은 미사용으로 잔존(추후 정리 가능).
 - **v1.2 (2026-07-05, 문서-코드 정합 + 미사용 CSS 정리)**: §3·§4에 실제 4번째 데이터 축 `advisory`(자문 활동, lectures.html 로드) 반영, §4 디렉토리 구조에 `robots.txt`·`sitemap.xml`(SEO) 추가. `css/style.css`의 미사용 `.comm-*` 스타일 제거(html·js 참조 0건 실측 확인) — v1.1 커뮤니티 섹션 제거의 잔재로 "추후 정리 가능"으로 예고했던 분량.
+- **v1.3 (2026-08-16, 포스팅 검증 자동화)**: `scripts/verify_post.py` 신설 — 로컬 정적 서버 + 실제 브라우저(playwright)로 새 글의 카드·썸네일·소제목·본문 그림(figure/figcaption)·모바일 375px 레이아웃·콘솔 오류를 한 번에 실측한다. insights/life 두 페이지 모두 대상(글 id로 자동 판별). §4 디렉토리 구조에 `scripts/` 추가, §5에 포스팅 후 실측 절차 명시. 같은 날 `js/insights.js`에 본문 이미지 렌더(`![설명](경로)` → figure)를 `js/life.js`와 동일하게 이식한 작업의 후속.
