@@ -80,11 +80,31 @@ function renderInsights(articles) {
       const paras = document.createElement('div');
       paras.className = 'ins-article-paragraphs';
       article.paragraphs.forEach(text => {
+        const imgMatch = typeof text === 'string'
+          ? text.match(/^!\[([\s\S]*)\]\(([^)]+)\)$/)
+          : null;
         if (typeof text === 'string' && text.startsWith('## ')) {
           const h = document.createElement('h4');
           h.className = 'ins-article-subhead';
           h.textContent = text.slice(3).trim();
           paras.appendChild(h);
+        } else if (imgMatch) {
+          const caption = imgMatch[1].trim();
+          const src = imgMatch[2].trim();
+          const figure = document.createElement('figure');
+          figure.className = 'ins-article-figure';
+          const img = document.createElement('img');
+          img.src = src;
+          img.loading = 'lazy';
+          img.alt = caption;
+          figure.appendChild(img);
+          if (caption) {
+            const figcaption = document.createElement('figcaption');
+            figcaption.className = 'ins-article-figcaption';
+            figcaption.textContent = caption;
+            figure.appendChild(figcaption);
+          }
+          paras.appendChild(figure);
         } else {
           const p = document.createElement('p');
           p.textContent = text;
