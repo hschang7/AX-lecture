@@ -7,3 +7,7 @@
 # OS/에디터 부산물
 .DS_Store
 Thumbs.db
+
+# 검증용 로컬 가상환경 (scripts/verify_post.py 용 — 저장소에 두지 않음)
+.venv-verify/
+.venv*/
