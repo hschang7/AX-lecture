@@ -366,10 +366,12 @@ section {
 }
 
 .profile-img {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
+  /* 원본이 세로 사진(472×630)이라 cover 시 위아래가 잘린다 — 상단 기준으로 맞춰 머리가 잘리지 않게 */
+  object-position: 50% 0;
   border: 3px solid #D4C4A8;
   margin: 0 auto 20px;
   background-color: var(--bg-accent);
@@ -379,8 +381,8 @@ section {
 
 /* 사진 없을 때 회색 원 placeholder */
 .profile-img-placeholder {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 3px solid #D4C4A8;
   background-color: var(--bg-accent);
