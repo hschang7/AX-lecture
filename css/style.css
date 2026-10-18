@@ -424,6 +424,11 @@ section {
   line-height: 1.9;
   color: var(--text-body);
   max-width: 640px;
+  word-break: keep-all;
+}
+
+.greeting-body + .greeting-body {
+  margin-top: 16px;
 }
 
 /* ── 3) 경력 타임라인 ── */
