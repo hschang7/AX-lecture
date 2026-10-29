@@ -473,6 +473,13 @@ section {
   color: var(--text-body);
 }
 
+.timeline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 10px;
+}
+
 /* ── 4) 이사회 활동 ── */
 .board-list {
   display: flex;
