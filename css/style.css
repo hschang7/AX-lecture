@@ -1880,6 +1880,7 @@ section {
   color: var(--text-body);
   margin: -8px 0 24px;
   line-height: 1.7;
+  word-break: keep-all;
 }
 
 .adv-year-label {
@@ -1902,6 +1903,7 @@ section {
 .adv-field {
   font-size: 14px;
   color: var(--text-body);
+  word-break: keep-all;
 }
 
 .adv-role {
